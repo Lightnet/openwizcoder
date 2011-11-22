@@ -1,1 +1,10 @@
 Created by: Lightnet
+
+Information: Portable Game created in java format.
+JME 3 that will be use as base for the game. Support by their network.
+
+There will be three part of the program. One is the main server that deal with many type of area in coding wise.
+Servers are to host and user are able to chat in lobby and the world is pvp and non pvp.
+Clients are able to host their own within their portable devices.
+
+It will be divide into project and will share the same library to made the server configures and as well for the main server.
