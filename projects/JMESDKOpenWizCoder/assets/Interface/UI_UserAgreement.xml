@@ -2,14 +2,19 @@
 <nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
     <useStyles filename="nifty-default-styles.xml" />
     <useControls filename="nifty-default-controls.xml" />
-    <screen id="start" controller="org.openwizcoder.ui.UIClientScreenController">
+    <screen id="start" controller="org.openwizcoder.ui.UIUserAgreementScreenController">
         <layer childLayout="center">
         <panel width="90%" height="80%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
 
             <panel height="80%" childLayout="horizontal">
                 <control id="scrollbarPanelId" name="scrollPanel" horizontal="true" height="100%" width="100%">
           <!-- first child is the content, the area to scroll around -->
-                    <panel id="myScrollStuff" width="1000px" height="1000px" childLayout="vertical">
+                
+          
+                    <panel id="myScrollStuff" width="480px" height="1000px" childLayout="vertical">
+                        <!--control name="label" text="TEST \n hells"/-->
+                        <text id="textareat" wrap="true"  text="User Agreement(s)!" style="base-font" color="#eeef" width="100%" />
+                        
                         <effect>
                             <onActive name="gradient" direction="vertical">
                                 <value offset="0%" color="#ffff" />
@@ -29,15 +34,14 @@
             </panel>
             <panel height="21px" childLayout="horizontal">
                 <control id="buttonOk" name="button" label="Agree">
-                    <interact onClick="SendClientMessage()"/>
+                    <interact onClick="BtAgree()"/>
                 </control>
                 
                 <control id="buttonOk" name="button" label="Disagree">
-                    <interact onClick="SendClientMessage()"/>
+                    <interact onClick="BtDisagree()"/>
                 </control>
             </panel>
-            
-            
+                        
         </panel>
         </layer>
     </screen>

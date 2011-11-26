@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    <useStyles filename="nifty-default-styles.xml" />
+    <useControls filename="nifty-default-controls.xml" />
+    <screen id="start" controller="org.openwizcoder.ui.UIClientScreenController">
+        <layer childLayout="center">
+        <panel width="25%" height="30%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+
+            <panel height="21px" childLayout="horizontal" valign="center">
+                <control id="buttonOk" name="button" label="Single Player" >
+                    <interact onClick="SendClientMessage()"/>
+                </control>
+            </panel>
+            <panel width="*" />
+            <panel height="21px" childLayout="horizontal" valign="center">
+                <control id="buttonOk" name="button" label="Multiple Player" >
+                    <interact onClick="SendClientMessage()"/>
+                </control>
+            </panel>
+            
+            <panel width="*" />
+            <panel height="21px" childLayout="horizontal" valign="center">
+                <control id="buttonOk" name="button" label="Options" >
+                    <interact onClick="SendClientMessage()"/>
+                </control>
+            </panel>
+            <panel width="*" />
+            <panel height="21px" childLayout="horizontal" valign="center">
+                <control id="buttonOk" name="button" label="Mod Packages" >
+                    <interact onClick="SendClientMessage()"/>
+                </control>
+            </panel>
+            <panel width="*" />
+            <panel height="21px" childLayout="horizontal" valign="center">
+                <control id="buttonOk" name="button" label="Credits" >
+                    <interact onClick="SendClientMessage()"/>
+                </control>
+            </panel>
+            
+            
+        </panel>
+        </layer>
+    </screen>
+    <screen id="end">
+    </screen>
+</nifty>

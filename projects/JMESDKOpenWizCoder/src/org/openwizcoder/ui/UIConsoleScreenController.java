@@ -4,24 +4,59 @@
  */
 package org.openwizcoder.ui;
 
-import com.jme3.network.Client;
-import com.jme3.network.Message;
 import de.lessvoid.nifty.Nifty;
+import de.lessvoid.nifty.NiftyEventSubscriber;
+import de.lessvoid.nifty.controls.Console;
+import de.lessvoid.nifty.controls.ConsoleCommands;
+import de.lessvoid.nifty.controls.ConsoleCommands.ConsoleCommand;
+import de.lessvoid.nifty.controls.TextField;
+import de.lessvoid.nifty.controls.TextFieldChangedEvent;
 import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
-import org.openwizcoder.messages.HelloMessage;
-import org.openwizcoder.messages.SMObjectShare;
 
 /**
  *
  * @author HP_Administrator
  */
 public class UIConsoleScreenController implements ScreenController{
-    public Client myClient;
+    private Nifty nifty;
+    private Screen screen;
+    private String ScreenNameStart = "startconsole";
+    private String ScreenNameEnd = "end";
     
     @Override
     public void bind(Nifty nifty, Screen screen) {
+        this.nifty = nifty;
+        this.screen = screen;
         
+        if(this.screen !=null){
+            // get the console control (this assumes that there is a console in the current screen with the id="console"
+            Console console = this.screen.findNiftyControl("console", Console.class);
+
+            // output hello to the console
+            console.output("Hello :)");
+
+            // create the console commands class and attach it to the console
+            ConsoleCommands consoleCommands = new ConsoleCommands(nifty, console);
+
+            // create a simple command (see below for implementation) this class will be called when the command is detected
+            // and register the command as a command with the console
+            ConsoleCommand simpleCommand = new SimpleCommand();
+            consoleCommands.registerCommand("simple", simpleCommand);
+
+            // create another command (this time we can even register arguments with nifty so that the command completion will work with arguments too)
+            ConsoleCommand showCommand = new ShowCommand();
+            consoleCommands.registerCommand("show a", showCommand);
+            consoleCommands.registerCommand("show b", showCommand);
+            consoleCommands.registerCommand("show c", showCommand);
+            consoleCommands.registerCommand("quit", showCommand);
+            consoleCommands.registerCommand("hide", showCommand);
+            consoleCommands.registerCommand("console", showCommand);
+            consoleCommands.registerCommand("h c", showCommand);
+
+            // finally enable command completion
+            consoleCommands.enableCommandCompletion(true);
+        }
     }
     
     @Override
@@ -34,23 +69,53 @@ public class UIConsoleScreenController implements ScreenController{
         
     }
     
-    public void SendClientMessage(){
-        System.out.print("\nUI SCREEN PRINT");
-        if(myClient !=null){
-            Message message = new HelloMessage("Hello World!");
-            myClient.send(message);
+    //@Override
+    //public void 
             
             
-            SMObjectShare smobj = new SMObjectShare();
-            smobj.userid = Integer.toString(myClient.getId());
-            myClient.send(smobj);
-            System.out.print("PASS");
-        }else{
-            System.out.print("FAIL");
+    
+    @NiftyEventSubscriber(id = "console")
+    public void onconsoleChanged(final String id, final TextFieldChangedEvent event) {
+        TextField score = event.getTextFieldControl();
+        String text = event.getText();  
+        System.out.print(text);
+    }
+    
+    private class SimpleCommand implements ConsoleCommand {
+        @Override
+        public void execute(final String[] args) {
+            System.out.println(args[0]); // this is always the command (in this case 'simple')
+            if (args.length > 1) {
+                for (String a : args) {
+                    System.out.println(a);
+                }
+            }
         }
     }
 
-    public void SetClient(Client myClient) {
-        this.myClient = myClient;
+    private class ShowCommand implements ConsoleCommand {
+        @Override
+        public void execute(final String[] args) {
+            System.out.println(args[0] + " " + args[1]);
+            
+            if((args[0].equalsIgnoreCase("h"))&&(args[1].equalsIgnoreCase("c"))){
+                onEndScreen();
+                System.out.print("HIDE ME!");
+                for (String name: nifty.getAllScreensName()){
+                    System.out.print(name);
+                }
+                
+                nifty.gotoScreen("end");
+            }
+        }
     }
+    
+    public String getScreenNameStart(){
+        return ScreenNameStart;        
+    }
+    
+    public String getScreenNameEnd(){
+        return ScreenNameEnd; 
+    }
+    
 }

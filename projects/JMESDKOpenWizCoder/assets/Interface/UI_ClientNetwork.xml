@@ -2,7 +2,7 @@
 <nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
     <useStyles filename="nifty-default-styles.xml" />
     <useControls filename="nifty-default-controls.xml" />
-    <screen id="start" controller="org.openwizcoder.ui.UIClientScreenController">
+    <screen id="start" controller="org.openwizcoder.ui.UIClientNetworkScreenController">
         <layer childLayout="center">
         <panel width="80%" height="25%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
 
@@ -10,28 +10,28 @@
 
             <control name="label" text="Client Config" />
             <panel height="21px" childLayout="horizontal">
-                <control name="label" text="Client Name:" />
-                <control width="230px" name="textfield" text="App Server" />
+                <control name="label" text="Client Name: " />
+                <control id="servername" width="230px" name="textfield" text="App Server" />
             </panel>
             
             <panel height="21px" childLayout="horizontal"/>
 
             <panel height="21px" childLayout="horizontal">
-                <control name="label" text="IP:" />
-                <control width="100px" name="textfield" text="127.0.0.1"/>
+                <control name="label" text="IP: " />
+                <control id="serverip" width="100px" name="textfield" text="127.0.0.1"/>
                 <!--control width="100px" name="textfield" text="255.255.255.255"/-->
-                <control name="label" text="TCP:" />
-                <control width="40px" name="textfield" text="5110" />
-                <control name="label" text="UDP:" />
-                <control width="40px" name="textfield" text="5110" />
+                <control name="label" text="TCP: " />
+                <control id="tcpport" width="40px" name="textfield" text="5110" />
+                <control name="label" text="UDP: " />
+                <control id="udpport" width="40px" name="textfield" text="5110" />
                 
                 <panel width="*" />
                 <control id="buttonOk" name="button" label="Connnect">
-                    <interact onClick="SendClientMessage()"/>
+                    <interact onClick="BtConnect()"/>
                 </control>
                 
                 <control id="buttonOk" name="button" label="Disconnect">
-                    <interact onClick="SendClientMessage()"/>
+                    <interact onClick="BtDisconnect()"/>
                 </control>
             </panel>
         </panel>

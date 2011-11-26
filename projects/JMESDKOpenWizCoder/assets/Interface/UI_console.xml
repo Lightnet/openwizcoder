@@ -3,9 +3,12 @@
     <useStyles filename="nifty-default-styles.xml" />
     <useControls filename="nifty-default-controls.xml" />
 
-    <screen id="start">
+    <screen id="startconsole" controller="org.openwizcoder.ui.UIConsoleScreenController">
         <layer childLayout="center">
             <control id="console" width="50%" name="nifty-console" lines="25" align="center" valign="center" />
         </layer>
     </screen>
+    
+    <screen id="end" />
+    
 </nifty>

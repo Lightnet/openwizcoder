@@ -32,8 +32,11 @@ import de.lessvoid.nifty.screen.ScreenController;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import org.openwizcoder.ui.UIClientScreenController;
+import org.openwizcoder.ui.UIConsoleScreenController;
+import org.openwizcoder.ui.UIModPackagesScreenController;
 
 
 /**
@@ -51,6 +54,8 @@ public class OpenWizCoderStandAloneMain extends SimpleApplication implements Scr
     public Nifty nifty;
     public SMObjectShare user;
     
+    public boolean btoggleconsole = false;
+    
     @Override
     public void simpleInitApp() {
         
@@ -62,7 +67,7 @@ public class OpenWizCoderStandAloneMain extends SimpleApplication implements Scr
                 }
             //}
         //});
-                Init_nifty();
+        Init_nifty();
         // activate windowed input behaviour
         flyCam.setDragToRotate(false);
         mouseInput.setCursorVisible(true);
@@ -74,13 +79,50 @@ public class OpenWizCoderStandAloneMain extends SimpleApplication implements Scr
         inputManager.addMapping("Pause",  new KeyTrigger(KeyInput.KEY_P));
         inputManager.addMapping("Left",   new KeyTrigger(KeyInput.KEY_J));
         inputManager.addMapping("Right",  new KeyTrigger(KeyInput.KEY_K));
+        inputManager.addMapping("toggleconsole",  new KeyTrigger(KeyInput.KEY_T));
+        
         //inputManager.addMapping("Rotate", new KeyTrigger(KeyInput.KEY_SPACE),
                                       //new MouseButtonTrigger(MouseInput.BUTTON_LEFT));
-        inputManager.addListener(analogListener, new String[]{"Left", "Right", "Rotate"}); 
+        inputManager.addListener(analogListener, new String[]{"Left", "Right", "Rotate","toggleconsole"}); 
     }
     
     private AnalogListener analogListener = new AnalogListener() {
         public void onAnalog(String name, float value, float tpf) {
+            
+            if (name.equals("toggleconsole")) {
+                
+                
+                if(nifty !=null){
+                    for (String sname: nifty.getAllScreensName()){
+                        System.out.print("\n Screen Name:"+sname);
+                    }                
+                }
+                
+                System.out.print("\n...Console");
+                if(btoggleconsole){
+                   btoggleconsole = false;
+                   System.out.print("\nHide Console");
+                   UIConsoleScreenController screenControl = (UIConsoleScreenController) nifty.getScreen("startconsole").getScreenController();
+                   if(screenControl == null){
+                        System.out.print("\nERROR Console!");
+                   }else{
+                       System.out.print("\nH Console!");
+                       nifty.gotoScreen(screenControl.getScreenNameEnd());
+                   }
+                }else{
+                    System.out.print("Show Console");
+                    UIConsoleScreenController screenControl = (UIConsoleScreenController) nifty.getScreen("startconsole").getScreenController();
+                   if(screenControl == null){
+                        System.out.print("\nERROR Console!");                          
+                   }else{
+                       System.out.print("\nS Console!");
+                       nifty.gotoScreen(screenControl.getScreenNameStart());
+                   }
+                    btoggleconsole = true;                    
+                }
+            }
+            
+            
             if (name.equals("Rotate")) {
                 System.out.print("\nrotate");
                 //player.rotate(0, value*speed, 0);
@@ -103,13 +145,29 @@ public class OpenWizCoderStandAloneMain extends SimpleApplication implements Scr
                                                           guiViewPort);
         nifty = niftyDisplay.getNifty();
         
-        UIClientScreenController screenControl = new UIClientScreenController();
-        nifty.fromXml("org/openwizcoder/ui/UI_Client.xml", "start", screenControl);                
+        UIModPackagesScreenController modpack = new UIModPackagesScreenController();
+        nifty.fromXml("Interface/UI_ModPackages.xml", "start", modpack);
+        
+                
+        //UIUserAgreementScreenController useragree = new UIUserAgreementScreenController();
+        //nifty.fromXml("Interface/UI_UserAgreement.xml", "start", useragree);
+        
+        //UIServerNetworkScreenController servernetwork = new UIServerNetworkScreenController();
+        //nifty.fromXml("Interface/UI_ServerNetwork.xml", "start", servernetwork);
+                
+        //UIClientNetworkScreenController clientnetwork = new UIClientNetworkScreenController();
+        //nifty.fromXml("Interface/UI_ClientNetwork.xml", "start", clientnetwork);
+                
+        //UILoginScreenController clientlogin = new UILoginScreenController();
+        //nifty.fromXml("Interface/UI_ClientLogin.xml", "start", clientlogin);
+        
+        //UIConsoleScreenController screenControl = new UIConsoleScreenController();
+        //nifty.fromXml("Interface/UI_console.xml", "startconsole", screenControl);
+        
         //nifty.fromXml("ui/UI_Client.xml", "start", this);                
         //UIClientScreenController screenControl = (UIClientScreenController) nifty.getScreen("start").getScreenController();
-        if( screenControl !=null){
-            screenControl.SetClient(myClient);
-        }
+        
+        
         // attach the nifty display to the gui view port as a processor
         guiViewPort.addProcessor(niftyDisplay);        
     }
@@ -219,16 +277,12 @@ public class OpenWizCoderStandAloneMain extends SimpleApplication implements Scr
             }
         }
     }
-    
-    
-    //testing for material change
-    public void PersonSetSkinColor(ColorRGBA color){
-        //Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-        //mat.setColor("m_Color", color);
-        //geomperson.setMaterial(mat);      
-    }
-  
-    public static void main(String[] args) {      
+
+    public static void main(String[] args) {   
+        Logger.getLogger("").setLevel(Level.SEVERE);
+        //Logger.getLogger("de.lessvoid").setLevel(Level.SEVERE);
+        //Logger.getLogger("de.lessvoid.*").setLevel(Level.SEVERE);
+        //Logger.getLogger("com.jme3").setLevel(Level.SEVERE);
         OpenWizCoderStandAloneMain app = new OpenWizCoderStandAloneMain();      
         // create new JME appsettings
         AppSettings settings = new AppSettings(true);

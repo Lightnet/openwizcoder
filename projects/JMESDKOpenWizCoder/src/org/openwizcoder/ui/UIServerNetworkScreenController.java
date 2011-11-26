@@ -14,7 +14,7 @@ import de.lessvoid.nifty.screen.Screen;
  *
  * @author HP_Administrator
  */
-public class UIClientScreenController extends UIBasicScreenController{
+public class UIServerNetworkScreenController extends UIBasicScreenController{
     public String Servername = "App Server";
     public String Serverip = "127.0.0.1";
     public String Servertcp = "5110";
@@ -34,7 +34,7 @@ public class UIClientScreenController extends UIBasicScreenController{
     public void onEndScreen() {
         
     }
-    
+
     @NiftyEventSubscriber(id = "servername")
     public void onServerNameChanged(final String id, final TextFieldChangedEvent event) {
         TextField score = event.getTextFieldControl();
@@ -63,12 +63,11 @@ public class UIClientScreenController extends UIBasicScreenController{
         //System.out.print("text:"+text);
     }
         
-    public void BtConnect(){
+    public void BtHost(){
         System.out.print("\nSERVER:"+Servername+":"+Serverip+":"+Servertcp+":"+Serverudp);
     }
     
     public void BtDisconnect(){
         System.out.print("\nSERVER D/C:");        
     }
-
 }

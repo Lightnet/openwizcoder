@@ -1,0 +1,67 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.openwizcoder;
+
+import com.jme3.app.SimpleApplication;
+import com.jme3.niftygui.NiftyJmeDisplay;
+import de.lessvoid.nifty.Nifty;
+import de.lessvoid.nifty.screen.Screen;
+
+
+import de.lessvoid.nifty.screen.ScreenController;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.openwizcoder.ui.UIChatScreenController;
+
+/**
+ * A chat test with Nifty and JME2
+ * @author Joakim Lindskog
+ *
+ */
+public class AppChatTest extends SimpleApplication implements ScreenController {
+	public Nifty nifty;
+
+	public static void main(final String[] args) throws Exception {
+            Logger.getLogger("").setLevel(Level.SEVERE);
+            AppChatTest app = new AppChatTest();
+            app.setShowSettings(false);
+            app.start();
+	}
+
+    public void Init_Nifty(){
+        NiftyJmeDisplay niftyDisplay = new NiftyJmeDisplay(assetManager,
+                                                          inputManager,
+                                                          audioRenderer,
+                                                          guiViewPort);
+        nifty = niftyDisplay.getNifty();
+        UIChatScreenController chatbox = new UIChatScreenController();
+        nifty.fromXml("Interface/UI_ChatSimple.xml" ,"start",chatbox);
+        // attach the nifty display to the gui view port as a processor
+        guiViewPort.addProcessor(niftyDisplay); 
+        
+    }    
+
+    @Override
+    public void simpleInitApp() {
+        Init_Nifty();
+        setDisplayStatView(false);
+    }
+
+   public void bind(Nifty nifty, Screen screen) {
+        System.out.println("bind( " + screen.getScreenId() + ")");
+    }
+
+    public void onStartScreen() {
+        System.out.println("onStartScreen");
+    }
+
+    public void onEndScreen() {
+        System.out.println("onEndScreen");
+    }
+
+    public void quit(){
+        nifty.gotoScreen("end");
+    }
+}

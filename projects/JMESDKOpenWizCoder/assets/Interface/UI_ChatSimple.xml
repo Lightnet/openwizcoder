@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty>
+
+	<useStyles filename="nifty-default-styles.xml" />
+	<useControls filename="nifty-default-controls.xml" />
+
+	<!-- +++++++++++++++++++++++++++++++++++++++ -->
+	<!-- start screen -->
+	<!-- +++++++++++++++++++++++++++++++++++++++ -->
+        
+	<screen id="start" controller="org.openwizcoder.ui.UIChatScreenController">
+		<layer id="layer" childLayout="center" align="center">
+                     <panel id="chatpanel" width="80%" height="80%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+			<control id="chatcontrol" name="nifty-chat" width="100%" height="50%" lines="14" sendLabel="Send Message" />
+                        </panel>
+		</layer>
+	</screen>
+</nifty>
