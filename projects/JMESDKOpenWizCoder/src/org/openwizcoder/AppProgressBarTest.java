@@ -13,9 +13,7 @@ import de.lessvoid.nifty.screen.ScreenController;
 import org.openwizcoder.controllers.ProgressbarControl;
 
 /**
- * A chat test with Nifty and JME2
- * @author Joakim Lindskog
- *
+ * press tab key while make the text fouces
  */
 public class AppProgressBarTest extends SimpleApplication implements ScreenController {
     public Nifty nifty;
@@ -36,7 +34,7 @@ public class AppProgressBarTest extends SimpleApplication implements ScreenContr
         
         
         
-        nifty.fromXml("Interface/UIprogressbar.xml", "start");
+        nifty.fromXml("Interface/UI_ProgressBar.xml", "start");
         // attach the nifty display to the gui view port as a processor
         guiViewPort.addProcessor(niftyDisplay);        
     }    

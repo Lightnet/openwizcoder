@@ -37,7 +37,7 @@ public class AppChatTest extends SimpleApplication implements ScreenController {
                                                           guiViewPort);
         nifty = niftyDisplay.getNifty();
         UIChatScreenController chatbox = new UIChatScreenController();
-        nifty.fromXml("Interface/UI_ChatSimple.xml" ,"start",chatbox);
+        nifty.fromXml("Interface/UI_Chat.xml" ,"start",chatbox);
         // attach the nifty display to the gui view port as a processor
         guiViewPort.addProcessor(niftyDisplay); 
         

@@ -26,6 +26,7 @@ import com.jme3.system.AppSettings;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openwizcoder.listeners.BaseServerConnectionListener;
 
 /**
  * you can embed a jme canvas inside a swing application
@@ -70,6 +71,11 @@ public class JMESpiderMonkeyServerMain extends SimpleApplication {
             
             myServer.addMessageListener(new SpiderMonkeyServerListener(), HelloMessage.class);            
             myServer.addMessageListener(objlistener, SMObjectShare.class);
+            
+            //this code deal with dis/connect from client
+            BaseServerConnectionListener serverlistenconnection = new BaseServerConnectionListener();
+            myServer.addConnectionListener(serverlistenconnection);
+            
             myServer.start();                        
         } catch (Exception e) {
             
