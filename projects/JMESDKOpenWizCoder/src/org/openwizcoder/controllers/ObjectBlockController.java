@@ -6,7 +6,7 @@ package org.openwizcoder.controllers;
  */
 
 
-import org.openwizcoder.messages.SMObjectShare;
+import org.openwizcoder.messages.ObjectShare;
 import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
@@ -30,7 +30,7 @@ public class ObjectBlockController implements Control {
     public boolean bmove = false;
     public boolean bphysics = false;
     
-    public SMObjectShare smobjshare;
+    public ObjectShare smobjshare;
     
     public ObjectBlockController() { 
         System.out.print("\nINIT CONTORLER:"+enabled);

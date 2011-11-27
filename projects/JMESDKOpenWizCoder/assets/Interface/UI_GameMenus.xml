@@ -40,23 +40,6 @@
         </panel>
         </layer>
     </screen>
-    
-<popup id="niftyPopupMenu" childLayout="absolute-inside"
-       controller="ControllerOfYourChoice" width="10%">
-  <interact onClick="closePopup()" onSecondaryClick="closePopup()" onTertiaryClick="closePopup()" />
-  <control id="#menu" name="niftyMenu" />
-</popup>
-
-<popup id="PopupExitID" childLayout="center" backgroundColor="#000a">
-        <panel width="25%" height="25%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
-            <panel height="21px" childLayout="horizontal">
-                <control id="buttonOk" name="button" label="Send Message">
-                    <interact onClick="SendClientMessage()"/>
-                </control>
-            </panel>
-        </panel>
-</popup>
-    
     <screen id="end">
     </screen>
 </nifty>

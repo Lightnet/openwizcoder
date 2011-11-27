@@ -7,7 +7,7 @@ package org.openwizcoder;
 
 
 import org.openwizcoder.controllers.SMObjectPlayerController;
-import org.openwizcoder.messages.SMObjectShare;
+import org.openwizcoder.messages.ObjectShare;
 import org.openwizcoder.messages.HelloMessage;
 import org.openwizcoder.listeners.SpiderMonkeyClientListener;
 import org.openwizcoder.listeners.SpiderMonkeyObjectClientListener;
@@ -40,7 +40,7 @@ import org.openwizcoder.ui.UIClientScreenController;
  * you can embed a jme canvas inside a swing application
  * @author pgi
  */
-public class JMESpiderMonkeyClientMain extends SimpleApplication implements ScreenController {
+public class JMESpiderMonkeyClientMain extends OpenWizCoderMain {
       
     public List<SMObjectPlayerController> players = new ArrayList<SMObjectPlayerController>();
     public static final String NAME = "App Server";
@@ -49,7 +49,7 @@ public class JMESpiderMonkeyClientMain extends SimpleApplication implements Scre
     public static final int UDP_PORT = 5110;    
     public Client myClient;
     public Nifty nifty;
-    public SMObjectShare user;
+    public ObjectShare user;
     
     @Override
     public void simpleInitApp() {
@@ -133,7 +133,7 @@ public class JMESpiderMonkeyClientMain extends SimpleApplication implements Scre
     
     public void Init_client() throws IOException{
         Serializer.registerClass(HelloMessage.class);
-        Serializer.registerClass(SMObjectShare.class);
+        Serializer.registerClass(ObjectShare.class);
         try {
             myClient = Network.connectToServer(JMESpiderMonkeyServerMain.NAME, JMESpiderMonkeyServerMain.VERSION,
                 "127.0.0.1", JMESpiderMonkeyServerMain.PORT, JMESpiderMonkeyServerMain.UDP_PORT);            
@@ -143,7 +143,7 @@ public class JMESpiderMonkeyClientMain extends SimpleApplication implements Scre
             SpiderMonkeyObjectClientListener objplayerhandler = new SpiderMonkeyObjectClientListener();
             objplayerhandler.SetApp(this);
             myClient.addMessageListener(handler, HelloMessage.class);
-            myClient.addMessageListener(objplayerhandler, SMObjectShare.class);
+            myClient.addMessageListener(objplayerhandler, ObjectShare.class);
         } catch (Exception e) {
             
         }
@@ -161,11 +161,11 @@ public class JMESpiderMonkeyClientMain extends SimpleApplication implements Scre
     }
     */
     
-    public void UserJoin(Client source,SMObjectShare smobj){
+    public void UserJoin(Client source,ObjectShare smobj){
         boolean bfound = false;
         for (SMObjectPlayerController player : players ){   
             if(source.getId() == Integer.parseInt( player.smobjshare.userid)){
-                SMObjectShare shareobject = (SMObjectShare)smobj;
+                ObjectShare shareobject = (ObjectShare)smobj;
                 player.smobjshare = shareobject;
                 //player.getSpatial().setLocalTranslation(shareobject.x, shareobject.y, shareobject.z);                
                 bfound = true;

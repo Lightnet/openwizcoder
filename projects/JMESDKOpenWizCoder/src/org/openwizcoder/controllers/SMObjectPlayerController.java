@@ -6,7 +6,7 @@ package org.openwizcoder.controllers;
  */
 
 
-import org.openwizcoder.messages.SMObjectShare;
+import org.openwizcoder.messages.ObjectShare;
 import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
@@ -26,7 +26,7 @@ public class SMObjectPlayerController implements Control {
     protected Spatial spatial;
     protected boolean enabled = true;
     
-    public SMObjectShare smobjshare;
+    public ObjectShare smobjshare;
     
     public SMObjectPlayerController() { 
         System.out.print("\nINIT CONTORLER:"+enabled);

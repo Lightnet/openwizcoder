@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    <useStyles filename="nifty-default-styles.xml" />
+    <useControls filename="nifty-default-controls.xml" />
+    <screen id="serverfilters" controller="org.openwizcoder.ui.UIClientScreenController">
+        <layer childLayout="center">
+        <panel width="70%" height="25%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+            <panel height="21px" childLayout="horizontal">
+                <control name="label" text="Server Filters:" />
+            </panel>
+            
+            <panel height="21px" childLayout="horizontal">
+                
+                
+                <control id="simpleCheckBox" name="label" text=" Show password: " />
+                <control id="simpleCheckBox" name="checkbox" />
+                
+                <control id="simpleCheckBox" name="label" text=" Hide Full: " />
+                <control id="simpleCheckBox" name="checkbox" />
+                
+                <control id="simpleCheckBox" name="label" text=" Hide Empty: " />
+                <control id="simpleCheckBox" name="checkbox" />
+            </panel>
+            <panel height="21px" childLayout="horizontal"/>
+            <panel height="21px" childLayout="horizontal">
+                <panel width="*" />
+                <control id="buttonOk" name="button" label="Cancel"/>
+                <panel width="*" />
+                <control id="buttonOk" name="button" label="Apply" />
+                <panel width="*" />
+             </panel>
+            
+        </panel>
+        </layer>
+    </screen>
+    <screen id="end">
+    </screen>
+</nifty>

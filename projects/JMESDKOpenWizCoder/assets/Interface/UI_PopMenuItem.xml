@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    <useStyles filename="nifty-default-styles.xml" />
+    <useControls filename="nifty-default-controls.xml" />
+    <screen id="start" controller="org.openwizcoder.ui.UIPopMenuItemScreenController">
+        <layer childLayout="center">
+            <panel width="20%" height="25%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+                <panel height="21px" childLayout="horizontal">
+                    <control id="BtMenuItem" name="button" label="Popup Menu" />                
+                </panel>
+                <panel height="21px" childLayout="horizontal"> 
+                    <control id="BtClose" name="button" label="Quit App" />                    
+                </panel>
+                
+           </panel> 
+        </layer>
+    </screen>
+    
+    <popup id="niftyPopupMenu" childLayout="absolute-inside" width="10%">
+  <interact onClick="closePopup()" onSecondaryClick="closePopup()" onTertiaryClick="closePopup()" />
+  <control id="#menu" name="niftyMenu" />
+</popup>
+
+<popup id="PopupExitID" childLayout="center" backgroundColor="#000a">
+        <panel width="80%" height="25%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+            <panel width="*" />
+            <panel height="21px" childLayout="horizontal">
+                <panel width="*" />
+                <control id="BtYes" name="button" label="Yes"/>
+                <panel width="*" />
+                <control id="BtNo" name="button" label="No"/>
+                <panel width="*" />
+            </panel>
+            <panel width="*" />
+        </panel>
+</popup>
+    
+    <screen id="end">
+    </screen>
+</nifty>

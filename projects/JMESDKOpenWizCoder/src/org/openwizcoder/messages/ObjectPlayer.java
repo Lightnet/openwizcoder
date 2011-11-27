@@ -10,10 +10,10 @@ package org.openwizcoder.messages;
  *
  * @author HP_Administrator
  */
-import org.openwizcoder.messages.SMObjectShare;
+import org.openwizcoder.messages.ObjectShare;
 import com.jme3.network.serializing.Serializable;
 
 @Serializable
-public class SMObjPlayer extends SMObjectShare{
+public class ObjectPlayer extends ObjectShare{
     
 }

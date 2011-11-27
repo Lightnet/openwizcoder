@@ -6,7 +6,7 @@ package org.openwizcoder;
  */
 
 import org.openwizcoder.controllers.SMObjectPlayerController;
-import org.openwizcoder.messages.SMObjectShare;
+import org.openwizcoder.messages.ObjectShare;
 import org.openwizcoder.messages.HelloMessage;
 import org.openwizcoder.listeners.SpiderMonkeyObjPlayerServerListener;
 import org.openwizcoder.listeners.SpiderMonkeyServerListener;
@@ -32,7 +32,7 @@ import org.openwizcoder.listeners.BaseServerConnectionListener;
  * you can embed a jme canvas inside a swing application
  * @author pgi
  */
-public class JMESpiderMonkeyServerMain extends SimpleApplication {
+public class JMESpiderMonkeyServerMain extends OpenWizCoderMain {
       
     public List<SMObjectPlayerController> players = new ArrayList<SMObjectPlayerController>();
     public static final String NAME = "App Server";
@@ -63,14 +63,14 @@ public class JMESpiderMonkeyServerMain extends SimpleApplication {
     
     public void Init_server() throws IOException{
         Serializer.registerClass(HelloMessage.class);
-        Serializer.registerClass(SMObjectShare.class);
+        Serializer.registerClass(ObjectShare.class);
         try {
             Server myServer = Network.createServer(NAME, VERSION, PORT, UDP_PORT);                                    
             SpiderMonkeyObjPlayerServerListener objlistener = new SpiderMonkeyObjPlayerServerListener();
             objlistener.SetApp(this);
             
             myServer.addMessageListener(new SpiderMonkeyServerListener(), HelloMessage.class);            
-            myServer.addMessageListener(objlistener, SMObjectShare.class);
+            myServer.addMessageListener(objlistener, ObjectShare.class);
             
             //this code deal with dis/connect from client
             BaseServerConnectionListener serverlistenconnection = new BaseServerConnectionListener();
@@ -90,7 +90,7 @@ public class JMESpiderMonkeyServerMain extends SimpleApplication {
         
         for (SMObjectPlayerController player : players ){   
             if(source.getId() == Integer.parseInt( player.smobjshare.userid)){
-                SMObjectShare shareobject = (SMObjectShare) message;                
+                ObjectShare shareobject = (ObjectShare) message;                
                 player.smobjshare = shareobject;                
                 //player.getSpatial().setLocalTranslation(shareobject.x, shareobject.y, shareobject.z);                
                 bfound = true;
@@ -106,7 +106,7 @@ public class JMESpiderMonkeyServerMain extends SimpleApplication {
             Spatial spl = (Spatial) geomplayer;
             
             SMObjectPlayerController newplayer = new SMObjectPlayerController(spl);
-            newplayer.smobjshare = new SMObjectShare();
+            newplayer.smobjshare = new ObjectShare();
             newplayer.smobjshare.userid = Integer.toString(source.getId());            
             newplayer.smobjshare.userid = Integer.toString(source.getId());
             

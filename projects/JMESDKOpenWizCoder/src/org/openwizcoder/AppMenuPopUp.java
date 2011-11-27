@@ -13,19 +13,19 @@ import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.openwizcoder.ui.UIChatScreenController;
+import org.openwizcoder.ui.UIPopMenuItemScreenController;
 
 /**
  * A chat test with Nifty and JME2
  * @author Joakim Lindskog
  *
  */
-public class AppChatTest extends SimpleApplication implements ScreenController {
+public class AppMenuPopUp extends SimpleApplication implements ScreenController {
 	public Nifty nifty;
 
 	public static void main(final String[] args) throws Exception {
             Logger.getLogger("").setLevel(Level.SEVERE);
-            AppChatTest app = new AppChatTest();
+            AppMenuPopUp app = new AppMenuPopUp();
             app.setShowSettings(false);
             app.start();
 	}
@@ -36,8 +36,9 @@ public class AppChatTest extends SimpleApplication implements ScreenController {
                                                           audioRenderer,
                                                           guiViewPort);
         nifty = niftyDisplay.getNifty();
-        UIChatScreenController chatbox = new UIChatScreenController();
-        nifty.fromXml("Interface/UI_Chat.xml" ,"start",chatbox);
+
+        UIPopMenuItemScreenController itemconrol = new UIPopMenuItemScreenController();
+        nifty.fromXml("Interface/UI_PopMenuItem.xml" ,"start",itemconrol);
         // attach the nifty display to the gui view port as a processor
         guiViewPort.addProcessor(niftyDisplay); 
         

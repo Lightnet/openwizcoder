@@ -10,14 +10,14 @@ import com.jme3.network.HostedConnection;
 import com.jme3.network.Message;
 import com.jme3.network.MessageListener;
 import org.openwizcoder.JMESpiderMonkeyServerMain;
-import org.openwizcoder.messages.SMObjectShare;
+import org.openwizcoder.messages.ObjectShare;
 
 public class SpiderMonkeyObjPlayerServerListener implements MessageListener<HostedConnection> {
     
     JMESpiderMonkeyServerMain app;
     
     public void messageReceived(HostedConnection source, Message message) {
-        if (message instanceof SMObjectShare) {
+        if (message instanceof ObjectShare) {
             // do something with the message
             //SMObjectShare helloMessage = (SMObjectShare) message;
             //System.out.println("Server received '" +helloMessage.getSomething() +"' from client #"+source.getId());
