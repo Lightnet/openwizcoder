@@ -17,11 +17,11 @@
     </screen>
     
     <popup id="niftyPopupMenu" childLayout="absolute-inside" width="10%">
-  <interact onClick="closePopup()" onSecondaryClick="closePopup()" onTertiaryClick="closePopup()" />
-  <control id="#menu" name="niftyMenu" />
-</popup>
+        <interact onClick="closePopup()" onSecondaryClick="closePopup()" onTertiaryClick="closePopup()" />
+        <control id="#menu" name="niftyMenu" />
+    </popup>
 
-<popup id="PopupExitID" childLayout="center" backgroundColor="#000a">
+    <popup id="PopupExitID" childLayout="center" backgroundColor="#000a">
         <panel width="80%" height="25%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
             <panel width="*" />
             <panel height="21px" childLayout="horizontal">
@@ -33,7 +33,7 @@
             </panel>
             <panel width="*" />
         </panel>
-</popup>
+    </popup>
     
     <screen id="end">
     </screen>

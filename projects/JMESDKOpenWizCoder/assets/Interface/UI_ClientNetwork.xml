@@ -6,8 +6,6 @@
         <layer childLayout="center">
         <panel width="80%" height="25%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
 
-
-
             <control name="label" text="Client Config" />
             <panel height="21px" childLayout="horizontal">
                 <control name="label" text="Client Name: " />
@@ -34,6 +32,23 @@
                     <interact onClick="BtDisconnect()"/>
                 </control>
             </panel>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
         </panel>
         </layer>
     </screen>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    <useStyles filename="nifty-default-styles.xml" />
+    <useControls filename="nifty-default-controls.xml" />
+    <screen id="NetworkBuildMenu" controller="org.openwizcoder.ui.UINetworkBuildController">
+        <layer childLayout="center">
+        <panel width="80%" height="30%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+
+            <control name="label" text="Network Config" />
+            <panel height="21px" childLayout="horizontal">
+                <panel width="*" />
+                <control name="label" text="Client Name: " />
+                <panel width="*" />
+                <control id="servername" width="230px" name="textfield" text="App Server" />
+                <panel width="*" />
+            </panel>
+            
+            <panel height="21px" childLayout="horizontal"/>
+
+            <panel height="21px" childLayout="horizontal">
+                <panel width="*" />
+                <control name="label" text="IP: " />
+                <control id="serverip" width="100px" name="textfield" text="127.0.0.1"/>
+                <panel width="*" />
+                <control name="label" text="TCP: " />
+                <control id="tcpport" width="40px" name="textfield" text="5110" />
+                <panel width="*" />
+                <control name="label" text="UDP: " />
+                <control id="udpport" width="40px" name="textfield" text="5110" />
+                <panel width="*" />
+            </panel>
+        
+         <panel height="21px" childLayout="horizontal" />
+        <panel height="21px" childLayout="horizontal">
+            <panel width="*" />
+                <control id="BtHost" name="button" label="Host" />
+                <panel width="*" />
+                <control id="BtConnect" name="button" label="Connnect" />
+                <panel width="*" />
+                <control id="BtDisconnect" name="button" label="Disconnect" />
+                <panel width="*" />
+        </panel>
+
+        </panel>
+        </layer>
+    </screen>
+    <screen id="end">
+    </screen>
+</nifty>

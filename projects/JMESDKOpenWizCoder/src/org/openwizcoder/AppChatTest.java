@@ -8,18 +8,12 @@ import com.jme3.app.SimpleApplication;
 import com.jme3.niftygui.NiftyJmeDisplay;
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.Screen;
-
-
 import de.lessvoid.nifty.screen.ScreenController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openwizcoder.ui.UIChatScreenController;
 
-/**
- * A chat test with Nifty and JME2
- * @author Joakim Lindskog
- *
- */
+
 public class AppChatTest extends SimpleApplication implements ScreenController {
 	public Nifty nifty;
 

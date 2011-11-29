@@ -9,6 +9,7 @@ import com.jme3.network.Server;
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
+import org.openwizcoder.OpenWizCoderApp;
 
 /**
  *
@@ -22,6 +23,8 @@ public class UIBasicScreenController implements ScreenController{
     
     public Client MyClient;
     public Server MyServer;
+    
+    public static OpenWizCoderApp app;
     
     @Override
     public void bind(Nifty nifty, Screen screen) {
@@ -55,5 +58,12 @@ public class UIBasicScreenController implements ScreenController{
     public void SetServer(Server server) {
         this.MyServer = server;
     }
+    
+    public static OpenWizCoderApp GetApp(){
+        return app;
+    }
         
+    public static void SetApp(OpenWizCoderApp _app){
+        app = _app;
+    }
 }

@@ -6,7 +6,7 @@ package org.openwizcoder.controllers;
  */
 
 
-import org.openwizcoder.messages.ObjectShare;
+import org.openwizcoder.messages.ObjectShareMsg;
 import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
@@ -17,6 +17,7 @@ import com.jme3.renderer.ViewPort;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.control.Control;
 import java.io.IOException;
+import org.openwizcoder.messages.CharInputMsg;
 
 /**
  *
@@ -26,7 +27,8 @@ public class SMObjectPlayerController implements Control {
     protected Spatial spatial;
     protected boolean enabled = true;
     
-    public ObjectShare smobjshare;
+    public ObjectShareMsg smobjshare;
+    public CharInputMsg charinput;
     
     public SMObjectPlayerController() { 
         System.out.print("\nINIT CONTORLER:"+enabled);
@@ -40,11 +42,13 @@ public class SMObjectPlayerController implements Control {
     @Override
     public void update(float tpf) {
         if (enabled && spatial != null) {            
+            
             if(smobjshare !=null){
                 Vector3f pos = spatial.getLocalTranslation();
-                System.out.print(pos);
+                //System.out.print("\n"+pos);
                 spatial.setLocalTranslation( smobjshare.x,  smobjshare.y,  smobjshare.z);
             }
+            
         }
     }
 

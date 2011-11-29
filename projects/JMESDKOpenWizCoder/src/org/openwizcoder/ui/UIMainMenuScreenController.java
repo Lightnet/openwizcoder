@@ -76,8 +76,7 @@ public class UIMainMenuScreenController extends UIBasicScreenController{
     public void createExitPopupMenu(){
         popupExit = nifty.createPopup("PopupExitID");
     }
-    
-    
+        
     public void createMyPopupMenu(){
         popup = nifty.createPopup("niftyPopupMenu");
         Menu myMenu = popup.findNiftyControl("#menu", Menu.class);

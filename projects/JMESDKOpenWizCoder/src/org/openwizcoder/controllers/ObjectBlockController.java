@@ -6,7 +6,7 @@ package org.openwizcoder.controllers;
  */
 
 
-import org.openwizcoder.messages.ObjectShare;
+import org.openwizcoder.messages.ObjectShareMsg;
 import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
@@ -30,7 +30,7 @@ public class ObjectBlockController implements Control {
     public boolean bmove = false;
     public boolean bphysics = false;
     
-    public ObjectShare smobjshare;
+    public ObjectShareMsg smobjshare;
     
     public ObjectBlockController() { 
         System.out.print("\nINIT CONTORLER:"+enabled);
@@ -46,7 +46,7 @@ public class ObjectBlockController implements Control {
         if (enabled && spatial != null) {            
             if(smobjshare !=null){
                 Vector3f pos = spatial.getLocalTranslation();
-                System.out.print(pos);
+                System.out.print("\n"+pos);
                 spatial.setLocalTranslation( smobjshare.x,  smobjshare.y,  smobjshare.z);
             }
         }
