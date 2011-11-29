@@ -14,8 +14,9 @@ import java.util.List;
 
 /**
  *
- * @author HP_Administrator
+ * @author Lightnet
  */
+
 public class UIPopUpExitScreenController extends UIBasicScreenController{
 
     @Override

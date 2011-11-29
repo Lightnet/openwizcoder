@@ -35,6 +35,91 @@
         </panel>
         </layer>
     </screen>
+    
+    <screen id="serveronlinemenu" controller="org.openwizcoder.ui.UIServerMenuScreenController">
+        <layer childLayout="center">
+            <panel width="80%" height="50%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+                <panel height="21px" childLayout="horizontal">
+                    <control name="label" text="Server Online: " />
+                    <control id="servername" width="230px" name="textfield" text="App Server" />
+                    <control id="buttonOk" name="button" label="Disconnect" />
+                </panel>
+                
+                
+                <panel height="21px" childLayout="horizontal">
+                    <control name="label" text="Kick Player: " />
+                    <control id="servername" width="230px" name="textfield" text="guest" />
+                    <control id="buttonOk" name="button" label="Kick" />
+                </panel>
+                
+            </panel>
+        </layer>
+    </screen>
+    
+    <screen id="ServerBroswerFilter" controller="org.openwizcoder.ui.UIClientScreenController">
+        <layer childLayout="center">
+        <panel width="70%" height="25%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+            <panel height="21px" childLayout="horizontal">
+                <control name="label" text="Server Filters:" />
+            </panel>
+            
+            <panel height="21px" childLayout="horizontal">
+                
+                
+                <control id="simpleCheckBox" name="label" text=" Show password: " />
+                <control id="simpleCheckBox" name="checkbox" />
+                
+                <control id="simpleCheckBox" name="label" text=" Hide Full: " />
+                <control id="simpleCheckBox" name="checkbox" />
+                
+                <control id="simpleCheckBox" name="label" text=" Hide Empty: " />
+                <control id="simpleCheckBox" name="checkbox" />
+            </panel>
+            <panel height="21px" childLayout="horizontal"/>
+            <panel height="21px" childLayout="horizontal">
+                <panel width="*" />
+                <control id="buttonOk" name="button" label="Cancel"/>
+                <panel width="*" />
+                <control id="buttonOk" name="button" label="Apply" />
+                <panel width="*" />
+             </panel>
+            
+        </panel>
+        </layer>
+    </screen>
+    
+    
+     <screen id="ServerBroswerList" controller="org.openwizcoder.ui.UIServerBroswerListScreenController">
+        <layer childLayout="center">
+			<panel width="90%" height="80%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+				<control name="label" text="Server Broswer" />
+				<panel height="4px" childLayout="horizontal"/>
+				<panel height="21px" childLayout="horizontal">
+                 
+					<control id="buttonOk" name="button" label="Back">
+						<interact onClick="BtLogin()"/>
+					</control>
+					<panel width="*" />
+					<control id="buttonOk" name="button" label="Fav.">
+						<interact onClick="BtCancel()"/>
+					</control>
+                                        
+                                        <control id="buttonOk" name="button" label="Host">
+						<interact onClick="BtCancel()"/>
+					</control>
+                                        <control id="buttonOk" name="button" label="Filters">
+						<interact onClick="BtCancel()"/>
+					</control>
+                                        <control id="buttonOk" name="button" label="Connect">
+						<interact onClick="BtCancel()"/>
+					</control>
+                                        
+				</panel>
+			</panel>
+        </layer>
+    </screen>
+    
+    
     <screen id="end">
     </screen>
 </nifty>

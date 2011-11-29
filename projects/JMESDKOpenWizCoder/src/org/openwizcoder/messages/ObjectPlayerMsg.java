@@ -1,17 +1,13 @@
 package org.openwizcoder.messages;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
+import org.openwizcoder.messages.ObjectShareMsg;
+import com.jme3.network.serializing.Serializable;
 
 /**
  *
- * @author HP_Administrator
+ * @author Lightnet
  */
-import org.openwizcoder.messages.ObjectShareMsg;
-import com.jme3.network.serializing.Serializable;
+
 
 @Serializable
 public class ObjectPlayerMsg extends ObjectShareMsg{

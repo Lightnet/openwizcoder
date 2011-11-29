@@ -6,6 +6,11 @@ import com.jme3.network.MessageListener;
 import org.openwizcoder.OpenWizCoderApp;
 import org.openwizcoder.messages.HelloMsg;
 
+/**
+ *
+ * @author Lightnet
+ */
+
 public class BaseClientListener implements MessageListener<Client> {
     public static OpenWizCoderApp app;
     

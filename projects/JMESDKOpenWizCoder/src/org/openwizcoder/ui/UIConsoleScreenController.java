@@ -16,8 +16,9 @@ import de.lessvoid.nifty.screen.ScreenController;
 
 /**
  *
- * @author HP_Administrator
+ * @author Lightnet
  */
+
 public class UIConsoleScreenController implements ScreenController{
     private Nifty nifty;
     private Screen screen;

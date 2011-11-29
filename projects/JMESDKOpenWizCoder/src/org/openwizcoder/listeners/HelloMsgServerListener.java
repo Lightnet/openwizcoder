@@ -5,6 +5,11 @@ import com.jme3.network.Message;
 import com.jme3.network.MessageListener;
 import org.openwizcoder.messages.HelloMsg;
 
+/**
+ *
+ * @author Lightnet
+ */
+
 public class HelloMsgServerListener implements MessageListener<HostedConnection> {
     public void messageReceived(HostedConnection source, Message message) {
         if (message instanceof HelloMsg) {

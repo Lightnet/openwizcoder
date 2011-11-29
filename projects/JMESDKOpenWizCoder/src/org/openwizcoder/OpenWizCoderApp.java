@@ -443,7 +443,8 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
             myClient.addMessageListener(new HelloMsgClientListener(), HelloMsg.class);
             myClient.addMessageListener(new ObjectShareClientListener(), ObjectShareMsg.class);
             System.out.print("client pass");
-            nifty.gotoScreen("end");
+            //nifty.gotoScreen("end");
+            nifty.gotoScreen("ClientMenuBuild");
         } catch (Exception e) {
             System.out.print("client fail");
         }
@@ -489,7 +490,9 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
             myServer.addConnectionListener(serverlistenconnection);            
             myServer.start();
             System.out.print("\nhosting pass");
-            nifty.gotoScreen("end");
+            //nifty.gotoScreen("end");
+            nifty.gotoScreen("serveronlinemenu");
+            
         } catch (Exception e) {
             System.out.print("\nhosting fail");
         }

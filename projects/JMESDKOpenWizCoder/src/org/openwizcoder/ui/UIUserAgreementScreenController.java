@@ -13,7 +13,7 @@ import de.lessvoid.nifty.screen.Screen;
 
 /**
  *
- * @author HP_Administrator
+ * @author Lightnet
  */
 public class UIUserAgreementScreenController extends UIBasicScreenController{
     private ScrollPanel scrollPanel;

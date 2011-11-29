@@ -15,7 +15,7 @@ import de.lessvoid.nifty.screen.Screen;
  * @author Lightnet
  */
 
-public class UIServerNetworkScreenController extends UIBasicScreenController{
+public class UIServerMenuScreenController extends UIBasicScreenController{
     public String Servername = "App Server";
     public String Serverip = "127.0.0.1";
     public String Servertcp = "5110";

@@ -12,6 +12,11 @@ import de.lessvoid.nifty.elements.Element;
 import de.lessvoid.nifty.render.NiftyImage;
 import de.lessvoid.nifty.screen.Screen;
 
+/**
+ *
+ * @author Lightnet
+ */
+
 public class UIChatScreenController extends UIBasicScreenController{
 
     NiftyImage newImage;// = nifty.getRenderEngine().createImage("Textures/member_icon.png", false);

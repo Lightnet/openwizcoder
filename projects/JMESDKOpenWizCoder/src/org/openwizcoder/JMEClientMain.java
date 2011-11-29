@@ -1,11 +1,5 @@
 package org.openwizcoder;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 import org.openwizcoder.controllers.SMObjectPlayerController;
 import org.openwizcoder.messages.ObjectShareMsg;
 import org.openwizcoder.messages.HelloMsg;
@@ -32,14 +26,13 @@ import de.lessvoid.nifty.screen.ScreenController;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.openwizcoder.ui.UIClientScreenController;
 
-
 /**
- * you can embed a jme canvas inside a swing application
- * @author pgi
+ *
+ * @author Lightnet
  */
+
 public class JMEClientMain extends OpenWizCoderApp {
       
     public List<SMObjectPlayerController> players = new ArrayList<SMObjectPlayerController>();

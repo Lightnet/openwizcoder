@@ -1,7 +1,6 @@
 package org.openwizcoder.controllers;
 
 import java.util.Properties;
-
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.controls.Controller;
 import de.lessvoid.nifty.controls.ScrollPanel;
@@ -12,6 +11,11 @@ import de.lessvoid.nifty.input.NiftyInputEvent;
 import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.xml.xpp3.Attributes;
 import javax.sound.midi.ControllerEventListener;
+
+/**
+ *
+ * @author Lightnet
+ */
 
 public class ChatAreaController implements Controller {
 	private ScrollPanel scrollPanel;

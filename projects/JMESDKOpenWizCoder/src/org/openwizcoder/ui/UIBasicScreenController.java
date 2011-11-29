@@ -13,8 +13,9 @@ import org.openwizcoder.OpenWizCoderApp;
 
 /**
  *
- * @author HP_Administrator
+ * @author Lightnet
  */
+
 public class UIBasicScreenController implements ScreenController{
     public Nifty nifty;
     public Screen screen;

@@ -10,6 +10,11 @@ import com.jme3.network.Server;
 import org.openwizcoder.OpenWizCoderApp;
 import org.openwizcoder.messages.ObjectShareMsg;
 
+/**
+ *
+ * @author Lightnet
+ */
+
 public class BaseServerConnectionListener implements ConnectionListener{
     
     public static OpenWizCoderApp app;

@@ -16,8 +16,9 @@ import org.bushe.swing.event.EventTopicSubscriber;
 
 /**
  *
- * @author HP_Administrator
+ * @author Lightnet
  */
+
 public class UIMainMenuScreenController extends UIBasicScreenController{
     Element popup;
     Element popupExit;

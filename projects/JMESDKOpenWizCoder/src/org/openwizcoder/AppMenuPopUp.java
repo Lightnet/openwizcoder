@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.openwizcoder;
 
 import com.jme3.app.SimpleApplication;
@@ -12,6 +8,11 @@ import de.lessvoid.nifty.screen.ScreenController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openwizcoder.ui.UIPopMenuItemScreenController;
+
+/**
+ *
+ * @author Lightnet
+ */
 
 public class AppMenuPopUp extends SimpleApplication implements ScreenController {
 	public Nifty nifty;

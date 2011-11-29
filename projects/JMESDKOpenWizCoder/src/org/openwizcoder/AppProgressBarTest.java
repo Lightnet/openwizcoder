@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.openwizcoder;
 
 import com.jme3.app.SimpleApplication;
@@ -13,8 +9,10 @@ import de.lessvoid.nifty.screen.ScreenController;
 import org.openwizcoder.controllers.ProgressbarControl;
 
 /**
- * press tab key while make the text fouces
+ *
+ * @author Lightnet
  */
+
 public class AppProgressBarTest extends SimpleApplication implements ScreenController {
     public Nifty nifty;
     public float percent;

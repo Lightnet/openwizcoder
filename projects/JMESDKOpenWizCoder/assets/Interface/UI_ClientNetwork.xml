@@ -32,26 +32,28 @@
                     <interact onClick="BtDisconnect()"/>
                 </control>
             </panel>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+
+        </panel>
+        </layer>
+    </screen>
+    
+    
+    <screen id="ClientMenuBuild" controller="org.openwizcoder.ui.UIClientBuildScreenController">
+        <layer childLayout="center">
+        <panel width="25%" height="25%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+
+            <panel height="21px" childLayout="horizontal">
+                <control id="BtRequestSpawn" name="button" label="Request Spawn" />
+            </panel>
             
             
         </panel>
         </layer>
     </screen>
+    
+    
+    
+    
     <screen id="end">
     </screen>
 </nifty>

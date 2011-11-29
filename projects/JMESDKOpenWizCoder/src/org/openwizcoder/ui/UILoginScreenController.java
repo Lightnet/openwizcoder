@@ -14,8 +14,9 @@ import de.lessvoid.nifty.screen.ScreenController;
 
 /**
  *
- * @author HP_Administrator
+ * @author Lightnet
  */
+
 public class UILoginScreenController extends UIBasicScreenController{
     
     public String username ="guest";

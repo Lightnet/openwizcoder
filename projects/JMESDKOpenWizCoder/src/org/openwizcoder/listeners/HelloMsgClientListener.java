@@ -7,6 +7,11 @@ import org.openwizcoder.JMEClientMain;
 import org.openwizcoder.OpenWizCoderApp;
 import org.openwizcoder.messages.ObjectShareMsg;
 
+/**
+ *
+ * @author Lightnet
+ */
+
 public class HelloMsgClientListener implements MessageListener<Client> {
     
     OpenWizCoderApp app;

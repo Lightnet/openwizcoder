@@ -12,8 +12,9 @@ import de.lessvoid.nifty.screen.Screen;
 
 /**
  *
- * @author HP_Administrator
+ * @author Lightnet
  */
+
 public class UIClientScreenController extends UIBasicScreenController{
     public String Servername = "App Server";
     public String Serverip = "127.0.0.1";

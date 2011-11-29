@@ -1,11 +1,5 @@
 package org.openwizcoder.controllers;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 import org.openwizcoder.messages.ObjectShareMsg;
 import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
@@ -21,8 +15,9 @@ import org.openwizcoder.messages.CharInputMsg;
 
 /**
  *
- * @author HP_Administrator
+ * @author Lightnet
  */
+
 public class SMObjectPlayerController implements Control {
     protected Spatial spatial;
     protected boolean enabled = true;

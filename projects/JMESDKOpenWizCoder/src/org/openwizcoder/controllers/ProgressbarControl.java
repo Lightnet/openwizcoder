@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.openwizcoder.controllers;
 
 import de.lessvoid.nifty.Nifty;
@@ -13,6 +9,11 @@ import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.tools.SizeValue;
 import de.lessvoid.xml.xpp3.Attributes;
 import java.util.Properties;
+
+/**
+ *
+ * @author Lightnet
+ */
 
 public class ProgressbarControl implements Controller {
 

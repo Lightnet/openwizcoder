@@ -11,8 +11,9 @@ import de.lessvoid.nifty.screen.Screen;
 
 /**
  *
- * @author HP_Administrator
+ * @author Lightnet
  */
+
 public class UIServerBroswerListScreenController extends UIBasicScreenController{
 
     @Override

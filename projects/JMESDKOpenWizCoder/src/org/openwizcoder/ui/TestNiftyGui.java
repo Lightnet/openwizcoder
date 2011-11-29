@@ -15,6 +15,11 @@ import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
 import java.net.URL;
 
+/**
+ *
+ * @author Lightnet
+ */
+
 public class TestNiftyGui extends SimpleApplication implements ScreenController {
 
     private Nifty nifty;

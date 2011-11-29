@@ -7,6 +7,11 @@ import org.openwizcoder.JMEServerMain;
 import org.openwizcoder.OpenWizCoderApp;
 import org.openwizcoder.messages.ObjectShareMsg;
 
+/**
+ *
+ * @author Lightnet
+ */
+
 public class ObjectShareServerListener extends BaseServerListener {
     
     @Override

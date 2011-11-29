@@ -4,6 +4,11 @@ import com.jme3.network.Client;
 import com.jme3.network.Message;
 import org.openwizcoder.messages.ObjectShareMsg;
 
+/**
+ *
+ * @author Lightnet
+ */
+
 public class ObjectShareClientListener extends BaseClientListener{
     
     @Override

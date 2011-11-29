@@ -1,11 +1,5 @@
 package org.openwizcoder.controllers;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 import org.openwizcoder.messages.ObjectShareMsg;
 import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
@@ -20,8 +14,9 @@ import java.io.IOException;
 
 /**
  *
- * @author HP_Administrator
+ * @author Lightnet
  */
+
 public class ObjectBlockController implements Control {
     protected Spatial spatial;
     protected boolean enabled = true;

@@ -19,6 +19,11 @@ import com.jme3.texture.Texture.MinFilter;
 import com.jme3.texture.Texture2D;
 import de.lessvoid.nifty.Nifty;
 
+/**
+ *
+ * @author Lightnet
+ */
+
 public class TestNiftyToMesh extends SimpleApplication{
 
     private Nifty nifty;

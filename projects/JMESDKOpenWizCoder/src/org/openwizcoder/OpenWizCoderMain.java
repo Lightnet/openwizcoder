@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.openwizcoder;
 
 import com.jme3.system.AppSettings;
@@ -10,8 +6,9 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author HP_Administrator
+ * @author Lightnet
  */
+
 public class OpenWizCoderMain {
     public static void main(String[] args) {   
         Logger.getLogger("").setLevel(Level.SEVERE);
