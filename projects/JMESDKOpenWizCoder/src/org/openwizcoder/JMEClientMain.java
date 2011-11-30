@@ -1,6 +1,6 @@
 package org.openwizcoder;
 
-import org.openwizcoder.controllers.SMObjectPlayerController;
+import org.openwizcoder.controllers.ObjectPlayerController;
 import org.openwizcoder.messages.ObjectShareMsg;
 import org.openwizcoder.messages.HelloMsg;
 import org.openwizcoder.listeners.ObjectShareClientListener;
@@ -35,7 +35,7 @@ import org.openwizcoder.ui.UIClientScreenController;
 
 public class JMEClientMain extends OpenWizCoderApp {
       
-    public List<SMObjectPlayerController> players = new ArrayList<SMObjectPlayerController>();
+    public List<ObjectPlayerController> players = new ArrayList<ObjectPlayerController>();
     public static final String NAME = "App Server";
     public static final int VERSION = 1;
     public static final int PORT = 5110;
@@ -156,7 +156,7 @@ public class JMEClientMain extends OpenWizCoderApp {
     
     public void UserJoin(Client source,ObjectShareMsg smobj){
         boolean bfound = false;
-        for (SMObjectPlayerController player : players ){   
+        for (ObjectPlayerController player : players ){   
             if(source.getId() == Integer.parseInt( player.smobjshare.userid)){
                 ObjectShareMsg shareobject = (ObjectShareMsg)smobj;
                 player.smobjshare = shareobject;
@@ -173,7 +173,7 @@ public class JMEClientMain extends OpenWizCoderApp {
             geomplayer.setMaterial(mat);        
             Spatial spl = (Spatial) geomplayer;
             
-            SMObjectPlayerController newplayer = new SMObjectPlayerController(spl);
+            ObjectPlayerController newplayer = new ObjectPlayerController(spl);
             //spl.addControl(newplayer);//need to be add in the object to able to update function
             //newplayer.userid = Integer.toString(source.getId());
             newplayer.smobjshare = smobj;
@@ -191,9 +191,9 @@ public class JMEClientMain extends OpenWizCoderApp {
             return;
         }
         //System.out.print("\nposition");
-        SMObjectPlayerController currentplayer = null;
+        ObjectPlayerController currentplayer = null;
         System.out.print("PLAYERS:" + players.size());
-        for (SMObjectPlayerController player : players){
+        for (ObjectPlayerController player : players){
             //System.out.print("\n[player ID:"+player.shareobject.userid + " CURRENT ID:" +user.userid + "]\n");
             if(player.smobjshare.userid.equalsIgnoreCase(user.userid) == true){
                 //System.out.print("FOUND PLAYER!");

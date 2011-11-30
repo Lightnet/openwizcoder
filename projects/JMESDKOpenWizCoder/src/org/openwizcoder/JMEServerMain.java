@@ -1,6 +1,6 @@
 package org.openwizcoder;
 
-import org.openwizcoder.controllers.SMObjectPlayerController;
+import org.openwizcoder.controllers.ObjectPlayerController;
 import org.openwizcoder.messages.ObjectShareMsg;
 import org.openwizcoder.messages.HelloMsg;
 import org.openwizcoder.listeners.ObjectShareServerListener;
@@ -30,7 +30,7 @@ import org.openwizcoder.listeners.BaseServerConnectionListener;
 
 public class JMEServerMain extends OpenWizCoderApp {
       
-    public List<SMObjectPlayerController> players = new ArrayList<SMObjectPlayerController>();
+    public List<ObjectPlayerController> players = new ArrayList<ObjectPlayerController>();
     public static final String NAME = "App Server";
     public static final int VERSION = 1;
     public static final int PORT = 5110;
@@ -84,7 +84,7 @@ public class JMEServerMain extends OpenWizCoderApp {
         
         //SMObjectShare SMObjshare = (SMObjectShare)smobj;
         
-        for (SMObjectPlayerController player : players ){   
+        for (ObjectPlayerController player : players ){   
             if(source.getId() == Integer.parseInt( player.smobjshare.userid)){
                 ObjectShareMsg shareobject = (ObjectShareMsg) message;                
                 player.smobjshare = shareobject;                
@@ -101,7 +101,7 @@ public class JMEServerMain extends OpenWizCoderApp {
             geomplayer.setMaterial(mat);        
             Spatial spl = (Spatial) geomplayer;
             
-            SMObjectPlayerController newplayer = new SMObjectPlayerController(spl);
+            ObjectPlayerController newplayer = new ObjectPlayerController(spl);
             newplayer.smobjshare = new ObjectShareMsg();
             newplayer.smobjshare.userid = Integer.toString(source.getId());            
             newplayer.smobjshare.userid = Integer.toString(source.getId());

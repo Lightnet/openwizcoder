@@ -1,6 +1,6 @@
 package org.openwizcoder;
 
-import org.openwizcoder.controllers.SMObjectPlayerController;
+import org.openwizcoder.controllers.ObjectPlayerController;
 import org.openwizcoder.messages.ObjectShareMsg;
 import org.openwizcoder.messages.HelloMsg;
 import org.openwizcoder.listeners.ObjectShareClientListener;
@@ -37,11 +37,16 @@ import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
 import java.util.ArrayList;
 import java.util.List;
+import org.openwizcoder.controllers.BaseController;
 import org.openwizcoder.listeners.BaseClientListener;
 import org.openwizcoder.listeners.BaseServerConnectionListener;
 import org.openwizcoder.listeners.BaseServerListener;
+import org.openwizcoder.listeners.CharInputServerListener;
 import org.openwizcoder.listeners.ObjectShareServerListener;
 import org.openwizcoder.listeners.HelloMsgServerListener;
+import org.openwizcoder.listeners.UserRequesttServerListener;
+import org.openwizcoder.messages.CharInputMsg;
+import org.openwizcoder.messages.RequestSpawnMsg;
 import org.openwizcoder.ui.UIBasicScreenController;
 import org.openwizcoder.ui.UIConsoleScreenController;
 
@@ -54,7 +59,7 @@ import org.openwizcoder.ui.UIConsoleScreenController;
 
 public class OpenWizCoderApp extends SimpleApplication implements ScreenController,ActionListener {
       
-    public List<SMObjectPlayerController> players = new ArrayList<SMObjectPlayerController>();
+    public List<ObjectPlayerController> players = new ArrayList<ObjectPlayerController>();
     public static final String NAME = "App Server";
     public static final int VERSION = 1;
     public static final int PORT = 5110;
@@ -76,13 +81,14 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
     public boolean btoggleconsole = false;
     private ChaseCamera chaseCam;
     private boolean left = false, right = false, up = false, down = false;
+    public CharInputMsg charinput = new CharInputMsg();
+    
     Material floor_mat;
     private Box    floor;
     private RigidBodyControl    floor_phy;
     public float timekey = 0;
     public float timekeynext = 10;
-    
-    
+        
     @Override
     public void simpleInitApp() {
         Init_Serializer();
@@ -90,6 +96,7 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
         BaseClientListener.setApp(this);
         BaseServerListener.setApp(this);
         BaseServerConnectionListener.setApp(this);
+        BaseController.setApp(this);
         
         Init_nifty();
         // activate windowed input behaviour
@@ -138,6 +145,20 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
             if (binding.equals("CharAttack")){
             //attack();
             }
+        }
+        
+        if((charinput.up != up)|| (charinput.down != down) || (charinput.right != right)|| (charinput.left != left)  ){
+            charinput.up = up;
+            charinput.down = down;
+            charinput.right = right;
+            charinput.left = left;
+            //System.out.print("\nupdate move");
+            
+            if(myClient != null){
+                if(myClient.isConnected()){
+                    myClient.send(charinput);
+                }
+            }            
         }
     }
 
@@ -194,7 +215,7 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
         
     public void Init_chars(){
         
-         Box b = new Box(Vector3f.ZERO, 0.1f, 0.1f, 0.0f); // create cube shape at the origin
+        Box b = new Box(Vector3f.ZERO, 0.1f, 0.1f, 0.0f); // create cube shape at the origin
         Geometry geom = new Geometry("Box", b);  // create cube geometry from the shape
         Material mat = new Material(assetManager,
           "Common/MatDefs/Misc/Unshaded.j3md");  // create a simple material
@@ -207,7 +228,7 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
         //blocks.setLocalTranslation(0, 1.0f, 3.0f);
         //rootNode.attachChild(blocks);
         
-        
+        /*
         //CapsuleCollisionShape capsule = new CapsuleCollisionShape(3f, 4f);
         CapsuleCollisionShape capsule = new CapsuleCollisionShape(1.0f,2.0f);
         character = new CharacterControl(capsule, 0.05f);
@@ -223,8 +244,8 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
         // Enable a chase cam for this target (typically the player).
         flyCam.setEnabled(false);
         chaseCam = new ChaseCamera(cam, model, inputManager);
-        
-        
+        */
+        chaseCam = new ChaseCamera(cam, geom, inputManager);
         
         Spatial blocks = assetManager.loadModel("Models/block.j3o");
         
@@ -260,13 +281,7 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
                 rootNode.attachChild(newplayer.getSpatial());
                 players.add(newplayer);
                 */
-        
-        
-        
-        
-        
-        
-        
+  
     }
 
     public void Init_KeysSetups(){
@@ -413,7 +428,10 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
     
     public void Init_Serializer(){
         Serializer.registerClass(HelloMsg.class);
-        Serializer.registerClass(ObjectShareMsg.class);        
+        Serializer.registerClass(ObjectShareMsg.class);
+        Serializer.registerClass(CharInputMsg.class);
+        Serializer.registerClass(RequestSpawnMsg.class);
+        
     }
     
     public void Init_Client(){
@@ -484,6 +502,8 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
                         
             myServer.addMessageListener(new HelloMsgServerListener(), HelloMsg.class);            
             myServer.addMessageListener(new ObjectShareServerListener(), ObjectShareMsg.class);
+            myServer.addMessageListener(new CharInputServerListener(), CharInputMsg.class);
+            myServer.addMessageListener(new UserRequesttServerListener(), RequestSpawnMsg.class);
             
             //this code deal with dis/connect from client
             BaseServerConnectionListener serverlistenconnection = new BaseServerConnectionListener();
@@ -507,7 +527,7 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
     public void ServerJoinSO(HostedConnection conn,ObjectShareMsg smobj)
     {
         boolean bfound = false;
-        for (SMObjectPlayerController player : players ){   
+        for (ObjectPlayerController player : players ){   
             if(smobj.userid.equalsIgnoreCase(player.smobjshare.userid)){
                 ObjectShareMsg shareobject = (ObjectShareMsg)smobj;
                 player.smobjshare = shareobject;
@@ -525,7 +545,7 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
             geomplayer.setMaterial(mat);        
             Spatial spl = (Spatial) geomplayer;
             
-            SMObjectPlayerController newplayer = new SMObjectPlayerController(spl);
+            ObjectPlayerController newplayer = new ObjectPlayerController(spl);
             //spl.addControl(newplayer);//need to be add in the object to able to update function
             //newplayer.userid = Integer.toString(source.getId());
             newplayer.smobjshare = smobj;
@@ -551,11 +571,11 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
     }
     
     public void UpdatePlayerObjectClient(Client source,Message message){
-        //System.out.print("client update shareobject");
+        System.out.print("client update shareobject");
         if (message instanceof ObjectShareMsg) {
             boolean bfound = false;
 
-            for (SMObjectPlayerController player : players ){   
+            for (ObjectPlayerController player : players ){   
                 if(source.getId() == Integer.parseInt( player.smobjshare.userid)){
                     ObjectShareMsg shareobject = (ObjectShareMsg)message;
                     player.smobjshare = shareobject;
@@ -572,7 +592,7 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
                 geomplayer.setMaterial(mat);        
                 Spatial spl = (Spatial) geomplayer;
 
-                SMObjectPlayerController newplayer = new SMObjectPlayerController(spl);
+                ObjectPlayerController newplayer = new ObjectPlayerController(spl);
                 //spl.addControl(newplayer);//need to be add in the object to able to update function
                 //newplayer.userid = Integer.toString(source.getId());
                 newplayer.smobjshare = (ObjectShareMsg)message;
@@ -587,13 +607,52 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
         //System.out.print("\nclient shareobject");
     }
     
+     public void UpdatePlayerInputServer(HostedConnection source,Message message){
+        
+        boolean bfound = false;        
+        CharInputMsg smobj = (CharInputMsg) message;
+                
+        if(smobj !=null){
+            for (ObjectPlayerController player : players ){   
+                if(source.getId() == Integer.parseInt( player.smobjshare.userid)){
+                    CharInputMsg shareobject = (CharInputMsg)smobj;
+                    player.charinput = shareobject;
+                    player.charinput.userid = source.getId();
+                    //player.getSpatial().setLocalTranslation(shareobject.x, shareobject.y, shareobject.z);                
+                    bfound = true;
+                }    
+            }
+
+            if(!bfound){
+                Box objplayer = new Box(Vector3f.ZERO, 1, 1, 1);
+                Geometry geomplayer = new Geometry("Box", objplayer);
+                Material mat = new Material(assetManager,"Common/MatDefs/Misc/Unshaded.j3md");
+                mat.setColor("m_Color", ColorRGBA.Brown);
+                geomplayer.setMaterial(mat);        
+                Spatial spl = (Spatial) geomplayer;
+
+                ObjectPlayerController newplayer = new ObjectPlayerController(spl);
+                //spl.addControl(newplayer);//need to be add in the object to able to update function
+                //newplayer.userid = Integer.toString(source.getId());
+                newplayer.charinput = smobj;
+                newplayer.charinput.userid = source.getId();
+
+                //source.send(newplayer.smobjshare);
+                rootNode.updateGeometricState();
+                rootNode.attachChild(newplayer.getSpatial());
+                rootNode.updateGeometricState();
+                players.add(newplayer);
+            }
+        }
+    }
+    
     public void UpdatePlayerObjectServer(HostedConnection source,Message message){
         
         boolean bfound = false;        
         ObjectShareMsg smobj = (ObjectShareMsg) message;
                 
         if(smobj !=null){
-            for (SMObjectPlayerController player : players ){   
+            for (ObjectPlayerController player : players ){   
                 if(source.getId() == Integer.parseInt( player.smobjshare.userid)){
                     ObjectShareMsg shareobject = (ObjectShareMsg)smobj;
                     player.smobjshare = shareobject;
@@ -610,7 +669,7 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
                 geomplayer.setMaterial(mat);        
                 Spatial spl = (Spatial) geomplayer;
 
-                SMObjectPlayerController newplayer = new SMObjectPlayerController(spl);
+                ObjectPlayerController newplayer = new ObjectPlayerController(spl);
                 //spl.addControl(newplayer);//need to be add in the object to able to update function
                 //newplayer.userid = Integer.toString(source.getId());
                 newplayer.smobjshare = smobj;
@@ -627,95 +686,37 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
 
     public void MoveObject(float x,float y,float z){
         if(myClient !=null){
-        if(ClientID != myClient.getId()){
-            return;
-        }
-        //System.out.print("\nposition");
-        SMObjectPlayerController currentplayer = null;
-        System.out.print("PLAYERS:" + players.size());
-        for (SMObjectPlayerController player : players){
-            //System.out.print("\n[player ID:"+player.shareobject.userid + " CURRENT ID:" +user.userid + "]\n");
-            if(player.smobjshare.userid.equalsIgnoreCase(Integer.toString(ClientID)) == true){
-                //System.out.print("FOUND PLAYER!");
-                currentplayer = player;
-                break;
-            }           
-        }
-        
-       if(currentplayer !=null){
-            //System.out.print("\nmove position");
-            currentplayer.smobjshare.x =  currentplayer.getSpatial().getLocalTranslation().x + x * speed;
-            currentplayer.smobjshare.y =  currentplayer.getSpatial().getLocalTranslation().y + y * speed;
-            currentplayer.smobjshare.z =  currentplayer.getSpatial().getLocalTranslation().z + z * speed;
-            if(myClient !=null){
-                myClient.send(currentplayer.smobjshare);
-                System.out.print("sending...");
+            if(ClientID != myClient.getId()){
+                return;
             }
-        }
-        }
-    }
-    
-    /*
-    public void UserJoin(Client source,ObjectShare smobj){
-        boolean bfound = false;
-        for (SMObjectPlayerController player : players ){   
-            if(source.getId() == Integer.parseInt( player.smobjshare.userid)){
-                ObjectShare shareobject = (ObjectShare)smobj;
-                player.smobjshare = shareobject;
-                //player.getSpatial().setLocalTranslation(shareobject.x, shareobject.y, shareobject.z);                
-                bfound = true;
-            }    
-        }
-        
-        if(!bfound){
-            Box objplayer = new Box(Vector3f.ZERO, 1, 1, 1);
-            Geometry geomplayer = new Geometry("Box", objplayer);
-            Material mat = new Material(assetManager,"Common/MatDefs/Misc/Unshaded.j3md");
-            mat.setColor("m_Color", ColorRGBA.Brown);
-            geomplayer.setMaterial(mat);        
-            Spatial spl = (Spatial) geomplayer;
-            
-            SMObjectPlayerController newplayer = new SMObjectPlayerController(spl);
-            //spl.addControl(newplayer);//need to be add in the object to able to update function
-            //newplayer.userid = Integer.toString(source.getId());
-            newplayer.smobjshare = smobj;
-            newplayer.smobjshare.userid = Integer.toString(source.getId());
-            
-            source.send(newplayer.smobjshare);
-            rootNode.attachChild(newplayer.getSpatial());
-            players.add(newplayer);
-        }        
-    }
-    */
-    
-    /*
-    public void MoveObject(float x,float y,float z){
-        if(user == null){
-            //System.out.print("nulll...");
-            return;
-        }
-        //System.out.print("\nposition");
-        SMObjectPlayerController currentplayer = null;
-        System.out.print("PLAYERS:" + players.size());
-        for (SMObjectPlayerController player : players){
-            //System.out.print("\n[player ID:"+player.shareobject.userid + " CURRENT ID:" +user.userid + "]\n");
-            if(player.smobjshare.userid.equalsIgnoreCase(user.userid) == true){
-                //System.out.print("FOUND PLAYER!");
-                currentplayer = player;
-                break;
-            }           
-        }
-        
-       if(currentplayer !=null){
-            //System.out.print("\nmove position");
-            currentplayer.smobjshare.x =  currentplayer.getSpatial().getLocalTranslation().x + x * speed;
-            currentplayer.smobjshare.y =  currentplayer.getSpatial().getLocalTranslation().y + y * speed;
-            currentplayer.smobjshare.z =  currentplayer.getSpatial().getLocalTranslation().z + z * speed;
-            if(myClient !=null){
-                myClient.send(currentplayer.smobjshare);
-                System.out.print("sending...");
+
+            if( myClient.isConnected() == false){
+                return;
+            }
+
+            //System.out.print("\nposition");
+            ObjectPlayerController currentplayer = null;
+            System.out.print("PLAYERS:" + players.size());
+            for (ObjectPlayerController player : players){
+                //System.out.print("\n[player ID:"+player.shareobject.userid + " CURRENT ID:" +user.userid + "]\n");
+                if(player.smobjshare.userid.equalsIgnoreCase(Integer.toString(ClientID)) == true){
+                    //System.out.print("FOUND PLAYER!");
+                    currentplayer = player;
+                    break;
+                }           
+            }
+
+           if(currentplayer !=null){
+                //System.out.print("\nmove position");
+                currentplayer.smobjshare.x =  currentplayer.getSpatial().getLocalTranslation().x + x * speed;
+                currentplayer.smobjshare.y =  currentplayer.getSpatial().getLocalTranslation().y + y * speed;
+                currentplayer.smobjshare.z =  currentplayer.getSpatial().getLocalTranslation().z + z * speed;
+                if(myClient !=null){
+                    myClient.send(currentplayer.smobjshare);
+                    System.out.print("sending...");
+                }
             }
         }
     }
-    */
+    
 }

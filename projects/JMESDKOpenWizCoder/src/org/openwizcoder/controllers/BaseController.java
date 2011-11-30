@@ -11,6 +11,7 @@ import com.jme3.renderer.ViewPort;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.control.Control;
 import java.io.IOException;
+import org.openwizcoder.OpenWizCoderApp;
 import org.openwizcoder.messages.CharInputMsg;
 
 /**
@@ -18,18 +19,20 @@ import org.openwizcoder.messages.CharInputMsg;
  * @author Lightnet
  */
 
-public class SMObjectPlayerController implements Control {
+public class BaseController implements Control {
+    public static OpenWizCoderApp app;
+    
     protected Spatial spatial;
     protected boolean enabled = true;
     
     public ObjectShareMsg smobjshare;
     public CharInputMsg charinput;
     
-    public SMObjectPlayerController() { 
+    public BaseController() { 
         System.out.print("\nINIT CONTORLER:"+enabled);
     }
     
-    public SMObjectPlayerController(Spatial sptl) {
+    public BaseController(Spatial sptl) {
         spatial = sptl;
         spatial.addControl(this);
         System.out.print("\nINIT CONTORLER:"+enabled);
@@ -37,13 +40,45 @@ public class SMObjectPlayerController implements Control {
     @Override
     public void update(float tpf) {
         if (enabled && spatial != null) {            
-            
+            /*
             if(smobjshare !=null){
                 Vector3f pos = spatial.getLocalTranslation();
                 //System.out.print("\n"+pos);
                 spatial.setLocalTranslation( smobjshare.x,  smobjshare.y,  smobjshare.z);
             }
+            */
             
+            if(charinput !=null){
+                Vector3f pos = spatial.getLocalTranslation();
+                Vector3f posmove = Vector3f.ZERO;
+                 if(charinput.up){
+                     posmove.z = 0.1f;
+                 }else if(charinput.down){
+                     posmove.z = -0.1f;
+                 }else{
+                     posmove.z = 0;
+                 }
+                 
+                 if(charinput.right){
+                     posmove.x = 0.1f;
+                 }else if(charinput.left){
+                     posmove.x = -0.1f;
+                 }else{
+                     posmove.x = 0;
+                 }
+                
+                 spatial.setLocalTranslation( pos.x + posmove.x,  pos.y,  pos.z + posmove.z);
+                 if(((pos.x + posmove.x) != pos.x )
+                     ||((pos.y + posmove.y) != pos.y )
+                    ||((pos.z + posmove.z) != pos.z ) ){
+                     System.out.print("\n"+spatial.getLocalTranslation()+"update!");
+                     
+                     
+                 }
+                 
+                
+                //System.out.print("\n"+spatial.getLocalTranslation());
+            }
         }
     }
 
@@ -53,7 +88,7 @@ public class SMObjectPlayerController implements Control {
     }
     @Override
     public Control cloneForSpatial(Spatial _spatial) {
-        SMObjectPlayerController control = new SMObjectPlayerController(_spatial);
+        BaseController control = new BaseController(_spatial);
         // ... // set custom properties
         _spatial.addControl(control);
         return control;
@@ -94,5 +129,13 @@ public class SMObjectPlayerController implements Control {
     
     public Spatial getSpatial() {
         return spatial;
+    }
+    
+    public static OpenWizCoderApp getApp(){
+        return app;
+    }
+    
+    public static void setApp(OpenWizCoderApp _app){
+        app = _app;
     }
 }
