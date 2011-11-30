@@ -87,31 +87,18 @@
     
      <screen id="ServerBroswerList" controller="org.openwizcoder.ui.UIServerBroswerListScreenController">
         <layer childLayout="center">
-			<panel width="90%" height="80%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
-				<control name="label" text="Server Broswer" />
-				<panel height="4px" childLayout="horizontal"/>
-				<panel height="21px" childLayout="horizontal">
-                 
-					<control id="buttonOk" name="button" label="Back">
-						<interact onClick="BtLogin()"/>
-					</control>
-					<panel width="*" />
-					<control id="buttonOk" name="button" label="Fav.">
-						<interact onClick="BtCancel()"/>
-					</control>
-                                        
-                                        <control id="buttonOk" name="button" label="Host">
-						<interact onClick="BtCancel()"/>
-					</control>
-                                        <control id="buttonOk" name="button" label="Filters">
-						<interact onClick="BtCancel()"/>
-					</control>
-                                        <control id="buttonOk" name="button" label="Connect">
-						<interact onClick="BtCancel()"/>
-					</control>
-                                        
-				</panel>
-			</panel>
+            <panel width="90%" height="80%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+                <control name="label" text="Server Broswer" />
+                <panel height="4px" childLayout="horizontal"/>
+                <panel height="21px" childLayout="horizontal">                 
+                    <control id="BtBackServerList" name="button" label="Back"/>					
+                    <control id="BtFav" width="50px" name="button" label="Fav." />                                        
+                    <control id="BtHost" width="50px" name="button" label="Host" />
+                    <control id="BtFilter"  width="50px" name="button" label="Filters" />
+                    <control id="BtConnect" name="button" label="Connect" />
+                    <control id="BtRefresh" name="button" label="Refresh" />                                        
+                </panel>
+                </panel>
         </layer>
     </screen>
     

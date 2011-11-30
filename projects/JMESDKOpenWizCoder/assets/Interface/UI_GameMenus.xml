@@ -56,35 +56,73 @@
     <screen id="UIMenuSingleplayer" controller="org.openwizcoder.ui.UISingleplayerScreenController">
         <layer childLayout="center">
         <panel width="90%" height="80%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
-
             <control name="label" text="Single Player"/>
             <panel height="21px" childLayout="horizontal">
             </panel>
             <panel height="21px" childLayout="horizontal">
                 <control id="BtBackSingleplayer" name="button" label="Back" />
+            </panel>            
+            <panel height="30%" childLayout="horizontal">
+                <control id="scrollbarPanelId" name="scrollPanel" horizontal="false" height="100%" width="100%">
+                    <panel id="myScrollStuff" horizontal="optional" height="1000px" childLayout="vertical">
+                    </panel>
+                </control>
             </panel>
-                        
+            <panel height="40%" childLayout="horizontal">
+                <panel childLayout="vertical" width="*" align="center" valign="center">
+                        <control id="myListBox" name="listBox" vertical="optional" horizontal="optional" displayItems="4" selection="Multiple" />
+                </panel>
+            </panel>
+            <panel height="*" childLayout="horizontal">
+                <panel width="*"/>
+                <control id="BtCharCreate" name="button" label="Create" />
+                <panel width="*"/>
+                <control id="BtCharLoad" name="button" label="Load" />
+                <panel width="*"/>
+                <control id="BtDelChar" name="button" label="Delete" />
+                <panel width="*"/>
+            </panel>            
         </panel>
-        
         </layer>
     </screen>
     
     
     <screen id="UIMenuModpackages" controller="org.openwizcoder.ui.UIModPackagesScreenController">
         <layer childLayout="center">
-            <panel childLayout="horizontal"  width="80%" height="80%" backgroundColor="#55a5" padding="10">
+            <panel childLayout="vertical" align="center" valign="center"  width="80%" height="80%" backgroundColor="#55a5" padding="2">
                 
-                <control id="myListBox" name="listBox" vertical="optional" horizontal="optional" displayItems="4" selection="Multiple" />
-                <!--control id="scrollbarPanelId" name="scrollPanel" horizontal="true" height="50%" width="50%">
-          
-                    <panel id="myScrollStuff" width="1000px" height="1000px" childLayout="vertical">
-                        
+                <panel height="21px" childLayout="horizontal" valign="center">                    
+                    <control id="BtBackMod" name="button" label="Back" />
+                    <control id="BtBackMod" name="label" text=" Mod Packages:" />
+                </panel>
+                
+                <panel childLayout="horizontal" valign="center" height="40%"> 
+                    <control id="scrollbarPanelId" name="scrollPanel" horizontal="true" height="100%" width="100%">
+                        <panel id="myScrollStuff" width="1000px" height="1000px" childLayout="vertical">
+                        </panel>
+                    </control>
+                </panel>
+                
+                <panel height="60%" childLayout="horizontal" align="center" valign="center"> 
+                    <panel childLayout="vertical" width="*" align="center" valign="center">
+                        <control id="myListBox" name="listBox" vertical="optional" horizontal="optional" displayItems="8" selection="Multiple" />
                     </panel>
-                </control-->
-                <panel height="21px" childLayout="horizontal" />
-                <control id="BtBackMod" name="button" label="Back" />
-                <control id="buttonOk" name="button" label="Apply" />
-                <control id="buttonOk" name="button" label="UnApply" />
+                    <panel childLayout="vertical" width="*" align="center" valign="center" >
+                        <panel height="21px" childLayout="horizontal" valign="center">
+                        <control id="buttonOk" name="button" label="Add" />
+                        </panel>
+                        <panel height="21px" childLayout="horizontal" valign="center">
+                        <control id="buttonOk" name="button" label="Remove" />
+                        </panel>
+                        <panel height="21px" childLayout="horizontal" valign="center">
+                        <control id="buttonOk" name="button" label="Config" />
+                        </panel>
+                    </panel>
+                    <panel childLayout="vertical" width="*" align="center" valign="center">
+                        <control id="myListBox" name="listBox" vertical="optional" horizontal="optional" displayItems="8" selection="Multiple" />
+                    </panel>
+                </panel>
+
             </panel>
         </layer>
     </screen>
@@ -95,12 +133,17 @@
             <!--control id="buttonOk" name="button" label="Back" /-->
             <panel width="70%" height="70%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
             <control id="BtBackCredits" name="button" label="Back" />
+            
+             <text id="textareat" wrap="true"  text="" style="base-font" color="#eeef" width="100%" />
+            
                 <!--panel height="21px" childLayout="horizontal">
                      <control id="buttonOk" name="button" label="Back" />
                 </panel-->
             </panel>
         </layer>
     </screen>
+    
+    
     
     <screen id="UIMenuOptions" controller="org.openwizcoder.ui.UIOptionsScreenController">
         <layer childLayout="center">
@@ -253,16 +296,14 @@
             <panel width="90%" height="80%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
                 <control name="label" text="Server Broswer" />
                 <panel height="4px" childLayout="horizontal"/>
-                <panel height="21px" childLayout="horizontal">
-                 
-                    <control id="BtBackBL" name="button" label="Back" />
-                    <panel width="*" />
-                    <control id="buttonOk" name="button" label="Fav." />
-                                        
-                    <control id="buttonOk" name="button" label="Host" />
-                    <control id="buttonOk" name="button" label="Filters" />
-                    <control id="buttonOk" name="button" label="Connect" />                    
-                    </panel>
+                <panel height="21px" childLayout="horizontal">                 
+                    <control id="BtBackServerList" name="button" label="Back"/>					
+                    <control id="BtFav" width="50px" name="button" label="Fav." />                                        
+                    <control id="BtHost" width="50px" name="button" label="Host" />
+                    <control id="BtFilter"  width="50px" name="button" label="Filters" />
+                    <control id="BtConnect" name="button" label="Connect" />
+                    <control id="BtRefresh" name="button" label="Refresh" />                                        
+                </panel>
                 </panel>
         </layer>
     </screen>

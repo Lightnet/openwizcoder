@@ -7,19 +7,40 @@
 
     <screen id="UIMenuModpackages" controller="org.openwizcoder.ui.UIModPackagesScreenController">
         <layer childLayout="center">
-            <panel childLayout="horizontal"  width="80%" height="80%" backgroundColor="#55a5" padding="10">
+            <panel childLayout="vertical" align="center" valign="center"  width="80%" height="80%" backgroundColor="#55a5" padding="2">
                 
-                <control id="myListBox" name="listBox" vertical="optional" horizontal="optional" displayItems="4" selection="Multiple" />
-                <!--control id="scrollbarPanelId" name="scrollPanel" horizontal="true" height="50%" width="50%">
-          
-                    <panel id="myScrollStuff" width="1000px" height="1000px" childLayout="vertical">
-                        
+                <panel height="21px" childLayout="horizontal" valign="center">                    
+                    <control id="BtBackMod" name="button" label="Back" />
+                    <control id="BtBackMod" name="label" text=" Mod Packages:" />
+                </panel>
+                
+                <panel childLayout="horizontal" valign="center" height="40%"> 
+                    <control id="scrollbarPanelId" name="scrollPanel" horizontal="true" height="100%" width="100%">
+                        <panel id="myScrollStuff" width="1000px" height="1000px" childLayout="vertical">
+                        </panel>
+                    </control>
+                </panel>
+                
+                <panel height="60%" childLayout="horizontal" align="center" valign="center"> 
+                    <panel childLayout="vertical" width="*" align="center" valign="center">
+                        <control id="myListBox" name="listBox" vertical="optional" horizontal="optional" displayItems="8" selection="Multiple" />
                     </panel>
-                </control-->
-                <panel height="21px" childLayout="horizontal" />
-                <control id="BtBackMod" name="button" label="Back" />
-                <control id="buttonOk" name="button" label="Apply" />
-                <control id="buttonOk" name="button" label="UnApply" />
+                    <panel childLayout="vertical" width="*" align="center" valign="center" >
+                        <panel height="21px" childLayout="horizontal" valign="center">
+                        <control id="buttonOk" name="button" label="Add" />
+                        </panel>
+                        <panel height="21px" childLayout="horizontal" valign="center">
+                        <control id="buttonOk" name="button" label="Remove" />
+                        </panel>
+                        <panel height="21px" childLayout="horizontal" valign="center">
+                        <control id="buttonOk" name="button" label="Config" />
+                        </panel>
+                    </panel>
+                    <panel childLayout="vertical" width="*" align="center" valign="center">
+                        <control id="myListBox" name="listBox" vertical="optional" horizontal="optional" displayItems="8" selection="Multiple" />
+                    </panel>
+                </panel>
+                              
             </panel>
         </layer>
     </screen>

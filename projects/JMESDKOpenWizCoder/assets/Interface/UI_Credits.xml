@@ -7,6 +7,9 @@
             <!--control id="buttonOk" name="button" label="Back" /-->
             <panel width="70%" height="70%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
             <control id="BtBackCredits" name="button" label="Back" />
+            
+            <text id="textareat" wrap="true"  text="" style="base-font" color="#eeef" width="100%" />
+            
                 <!--panel height="21px" childLayout="horizontal">
                      <control id="buttonOk" name="button" label="Back" />
                 </panel-->

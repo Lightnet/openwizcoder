@@ -5,16 +5,33 @@
     <screen id="UIMenuSingleplayer" controller="org.openwizcoder.ui.UISingleplayerScreenController">
         <layer childLayout="center">
         <panel width="90%" height="80%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
-
             <control name="label" text="Single Player"/>
             <panel height="21px" childLayout="horizontal">
             </panel>
             <panel height="21px" childLayout="horizontal">
                 <control id="BtBackSingleplayer" name="button" label="Back" />
+            </panel>            
+            <panel height="30%" childLayout="horizontal">
+                <control id="scrollbarPanelId" name="scrollPanel" horizontal="false" height="100%" width="100%">
+                    <panel id="myScrollStuff" horizontal="optional" height="1000px" childLayout="vertical">
+                    </panel>
+                </control>
             </panel>
-                        
+            <panel height="40%" childLayout="horizontal">
+                <panel childLayout="vertical" width="*" align="center" valign="center">
+                        <control id="myListBox" name="listBox" vertical="optional" horizontal="optional" displayItems="4" selection="Multiple" />
+                </panel>
+            </panel>
+            <panel height="*" childLayout="horizontal">
+                <panel width="*"/>
+                <control id="BtCharCreate" name="button" label="Create" />
+                <panel width="*"/>
+                <control id="BtCharLoad" name="button" label="Load" />
+                <panel width="*"/>
+                <control id="BtDelChar" name="button" label="Delete" />
+                <panel width="*"/>
+            </panel>            
         </panel>
-        
         </layer>
     </screen>
     <screen id="end">

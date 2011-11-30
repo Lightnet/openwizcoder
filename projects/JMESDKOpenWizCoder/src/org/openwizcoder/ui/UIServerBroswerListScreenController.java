@@ -32,10 +32,9 @@ public class UIServerBroswerListScreenController extends UIBasicScreenController
         
     }
 
-    @NiftyEventSubscriber(id = "BtBackBL")
-    public void onSwitchButtonClicked(final String id, final ButtonClickedEvent event) {
+    @NiftyEventSubscriber(id = "BtBackServerList")
+    public void BtBackServerListClicked(final String id, final ButtonClickedEvent event) {
         System.out.print("\nButton press back");
         this.nifty.gotoScreen("start");
     }
-
 }
