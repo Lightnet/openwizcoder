@@ -6,6 +6,7 @@ package org.openwizcoder.ui;
 
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.NiftyEventSubscriber;
+import de.lessvoid.nifty.controls.ButtonClickedEvent;
 import de.lessvoid.nifty.controls.Console;
 import de.lessvoid.nifty.controls.ConsoleCommands;
 import de.lessvoid.nifty.controls.ConsoleCommands.ConsoleCommand;
@@ -70,11 +71,12 @@ public class UIConsoleScreenController implements ScreenController{
         
     }
     
-    //@Override
-    //public void 
+    @NiftyEventSubscriber(id = "BtCloseConsole")
+    public void BtCloseConsoleClick(final String id, final ButtonClickedEvent eventt) {
+        System.out.print("\nclose console");
+        nifty.gotoScreen("HUDPlayer");
+    }
             
-            
-    
     @NiftyEventSubscriber(id = "console")
     public void onconsoleChanged(final String id, final TextFieldChangedEvent event) {
         TextField score = event.getTextFieldControl();

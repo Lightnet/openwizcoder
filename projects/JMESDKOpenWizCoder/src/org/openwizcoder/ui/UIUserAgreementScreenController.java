@@ -5,6 +5,8 @@
 package org.openwizcoder.ui;
 
 import de.lessvoid.nifty.Nifty;
+import de.lessvoid.nifty.NiftyEventSubscriber;
+import de.lessvoid.nifty.controls.ButtonClickedEvent;
 import de.lessvoid.nifty.controls.ScrollPanel;
 import de.lessvoid.nifty.controls.ScrollPanel.AutoScroll;
 import de.lessvoid.nifty.elements.Element;
@@ -70,15 +72,15 @@ public class UIUserAgreementScreenController extends UIBasicScreenController{
         return textArea.getRenderer(TextRenderer.class).getOriginalText();
     }
     
-
-    public void BtAgree(){        
+    @NiftyEventSubscriber(id = "BtAgree")
+    public void BtAgreeClick(final String id, final ButtonClickedEvent eventt) {
         System.out.print("\nBtAgree");
     }
-    
-    public void BtDisagree(){
+
+    @NiftyEventSubscriber(id = "BtDisagree")
+    public void BtDisagreeClick(final String id, final ButtonClickedEvent eventt) {
         System.out.print("\nBtDisagree");
         nifty.gotoScreen("end");        
     }
-    
     
 }

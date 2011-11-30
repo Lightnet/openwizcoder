@@ -2,7 +2,9 @@
 <nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
     <useStyles filename="nifty-default-styles.xml" />
     <useControls filename="nifty-default-controls.xml" />
-    <screen id="start" controller="org.openwizcoder.ui.UIClientNetworkScreenController">
+    
+    
+    <screen id="UIMenuClientNetwork" controller="org.openwizcoder.ui.UIClientNetworkScreenController">
         <layer childLayout="center">
         <panel width="80%" height="25%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
 
@@ -24,13 +26,8 @@
                 <control id="udpport" width="40px" name="textfield" text="5110" />
                 
                 <panel width="*" />
-                <control id="buttonOk" name="button" label="Connnect">
-                    <interact onClick="BtConnect()"/>
-                </control>
-                
-                <control id="buttonOk" name="button" label="Disconnect">
-                    <interact onClick="BtDisconnect()"/>
-                </control>
+                <control id="BtConnect" name="button" label="Connnect"/>                
+                <control id="BtDisconnect" name="button" label="Disconnect"/>
             </panel>
 
         </panel>
@@ -41,17 +38,40 @@
     <screen id="ClientMenuBuild" controller="org.openwizcoder.ui.UIClientBuildScreenController">
         <layer childLayout="center">
         <panel width="25%" height="25%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
-
             <panel height="21px" childLayout="horizontal">
                 <control id="BtRequestSpawn" name="button" label="Request Spawn" />
             </panel>
-            
-            
         </panel>
         </layer>
     </screen>
     
     
+    <screen id="UIMenuLogin" controller="org.openwizcoder.ui.UILoginScreenController">
+        <layer childLayout="center">
+        <panel width="40%" height="40%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+            <control name="label" text="Client Login" />
+            <panel height="21px" childLayout="horizontal"/>
+            <panel height="21px" childLayout="horizontal">
+                 <control name="label" text="User:" />
+                 <panel width="*" />
+                <control id="userid" width="128px" name="textfield" text="guest" />
+                <panel width="*" />
+             </panel>   
+             <panel height="21px" childLayout="horizontal">    
+                 <control name="label" text="Pass:" />
+                 <panel width="*" />
+                <control id="userpass" width="128px" name="textfield" text="pass" />
+                <panel width="*" />
+            </panel>
+            <panel height="21px" childLayout="horizontal"/>
+            <panel height="21px" childLayout="horizontal">
+                <control id="BtLogin" name="button" label="Ok" />
+                <panel width="*" />
+                <control id="BtCancel" name="button" label="Cancel"/>
+            </panel>
+        </panel>
+        </layer>
+    </screen>
     
     
     <screen id="end">

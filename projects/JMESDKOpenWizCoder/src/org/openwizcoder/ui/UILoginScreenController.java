@@ -6,11 +6,11 @@ package org.openwizcoder.ui;
 
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.NiftyEventSubscriber;
+import de.lessvoid.nifty.controls.ButtonClickedEvent;
 import de.lessvoid.nifty.controls.TextField;
 import de.lessvoid.nifty.controls.TextFieldChangedEvent;
 import de.lessvoid.nifty.elements.Element;
 import de.lessvoid.nifty.screen.Screen;
-import de.lessvoid.nifty.screen.ScreenController;
 
 /**
  *
@@ -53,8 +53,13 @@ public class UILoginScreenController extends UIBasicScreenController{
         userpass = event.getText();
         //System.out.print("text:"+text);
     }
-        
-    public void BtLogin(){        
+    
+    
+    @NiftyEventSubscriber(id = "BtLogin")
+    public void BtLoginClick(final String id, final ButtonClickedEvent eventt) {
+        System.out.print("\nclose console");
+       
+          
         //textInput = screen.findElementByName("userid");
         //textInput.getControl(TextFieldControl.class).getText()
         textInput = this.nifty.getCurrentScreen().findElementByName("userid");
@@ -77,7 +82,8 @@ public class UILoginScreenController extends UIBasicScreenController{
         System.out.print("\nenter login");
     }
     
-    public void BtCancel(){
+    @NiftyEventSubscriber(id = "BtCancel")
+    public void BtCancelClick(final String id, final ButtonClickedEvent eventt) {
         System.out.print("\ncancel login");
     }
     

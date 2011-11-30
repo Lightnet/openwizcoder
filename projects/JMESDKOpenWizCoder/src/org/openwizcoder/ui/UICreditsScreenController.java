@@ -14,7 +14,7 @@ import de.lessvoid.nifty.screen.Screen;
  * @author Lightnet
  */
 
-public class UIServerBroswerListScreenController extends UIBasicScreenController{
+public class UICreditsScreenController extends UIBasicScreenController{
 
     @Override
     public void bind(Nifty nifty, Screen screen) {
@@ -32,10 +32,10 @@ public class UIServerBroswerListScreenController extends UIBasicScreenController
         
     }
 
-    @NiftyEventSubscriber(id = "BtBackBL")
-    public void onSwitchButtonClicked(final String id, final ButtonClickedEvent event) {
-        System.out.print("\nButton press back");
-        this.nifty.gotoScreen("start");
+    @NiftyEventSubscriber(id = "BtBackCredits")
+    public void BtBackCreditsClick(final String id, final ButtonClickedEvent eventt) {
+        System.out.print("\nclose console");
+        nifty.gotoScreen("start");
     }
-
+    
 }

@@ -2,6 +2,17 @@
 <nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
     <useStyles filename="nifty-default-styles.xml" />
     <useControls filename="nifty-default-controls.xml" />
+    
+    <screen id="HUDPlayer" controller="org.openwizcoder.ui.UIChatScreenController">
+        <layer id="layer" childLayout="center" align="center">
+            <panel height="21px" childLayout="horizontal">
+                <control id="BtSinglePlayer" name="button" label="Menu" />
+                <control id="BtSinglePlayer" name="label" text="HUD" />
+            </panel>
+        </layer>
+    </screen>
+    
+    
     <screen id="start" controller="org.openwizcoder.ui.UIMainMenuScreenController">
         <layer childLayout="center">
         <panel width="25%" height="40%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
@@ -40,17 +51,110 @@
         </panel>
         </layer>
     </screen>
+    
+    
+    <screen id="UIMenuSingleplayer" controller="org.openwizcoder.ui.UISingleplayerScreenController">
+        <layer childLayout="center">
+        <panel width="90%" height="80%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+
+            <control name="label" text="Single Player"/>
+            <panel height="21px" childLayout="horizontal">
+            </panel>
+            <panel height="21px" childLayout="horizontal">
+                <control id="BtBackSingleplayer" name="button" label="Back" />
+            </panel>
+                        
+        </panel>
+        
+        </layer>
+    </screen>
+    
+    
+    <screen id="UIMenuModpackages" controller="org.openwizcoder.ui.UIModPackagesScreenController">
+        <layer childLayout="center">
+            <panel childLayout="horizontal"  width="80%" height="80%" backgroundColor="#55a5" padding="10">
+                
+                <control id="myListBox" name="listBox" vertical="optional" horizontal="optional" displayItems="4" selection="Multiple" />
+                <!--control id="scrollbarPanelId" name="scrollPanel" horizontal="true" height="50%" width="50%">
+          
+                    <panel id="myScrollStuff" width="1000px" height="1000px" childLayout="vertical">
+                        
+                    </panel>
+                </control-->
+                <panel height="21px" childLayout="horizontal" />
+                <control id="BtBackMod" name="button" label="Back" />
+                <control id="buttonOk" name="button" label="Apply" />
+                <control id="buttonOk" name="button" label="UnApply" />
+            </panel>
+        </layer>
+    </screen>
+    
+    
+    <screen id="UIMenuCredits" controller="org.openwizcoder.ui.UICreditsScreenController">
+        <layer childLayout="center">
+            <!--control id="buttonOk" name="button" label="Back" /-->
+            <panel width="70%" height="70%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+            <control id="BtBackCredits" name="button" label="Back" />
+                <!--panel height="21px" childLayout="horizontal">
+                     <control id="buttonOk" name="button" label="Back" />
+                </panel-->
+            </panel>
+        </layer>
+    </screen>
+    
+    <screen id="UIMenuOptions" controller="org.openwizcoder.ui.UIOptionsScreenController">
+        <layer childLayout="center">
+            <!--control id="buttonOk" name="button" label="Back" /-->
+            <panel width="70%" height="70%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+            <control id="BtBackOptions" name="button" label="Back" />
+                <!--panel height="21px" childLayout="horizontal">
+                     <control id="buttonOk" name="button" label="Back" />
+                </panel-->
+            </panel>
+        </layer>
+    </screen>
+    
         
     <screen id="startconsole" controller="org.openwizcoder.ui.UIConsoleScreenController">
         <layer childLayout="center">
+            <panel align="center" valign="center" childLayout="vertical">
             <control id="console" width="50%" name="nifty-console" lines="25" align="center" valign="center" />
+            <control id="BtCloseConsole" name="button" label="Close" />
             <effect>
                     <onStartScreen name="move" mode="in" direction="top" length="300" startDelay="0" inherit="true"/>
                     <onEndScreen name="move" mode="out" direction="bottom" length="300" startDelay="0" inherit="true"/>
                     <onHover name="pulsate" scaleFactor="0.008" startColor="#f600" endColor="#ffff" post="true"/>
             </effect>
+            </panel>
         </layer>
-        
+    </screen>
+    
+    
+    <screen id="UIMenuLogin" controller="org.openwizcoder.ui.UILoginScreenController">
+        <layer childLayout="center">
+        <panel width="40%" height="40%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+            <control name="label" text="Client Login" />
+            <panel height="21px" childLayout="horizontal"/>
+            <panel height="21px" childLayout="horizontal">
+                 <control name="label" text="User:" />
+                 <panel width="*" />
+                <control id="userid" width="128px" name="textfield" text="guest" />
+                <panel width="*" />
+             </panel>   
+             <panel height="21px" childLayout="horizontal">    
+                 <control name="label" text="Pass:" />
+                 <panel width="*" />
+                <control id="userpass" width="128px" name="textfield" text="pass" />
+                <panel width="*" />
+            </panel>
+            <panel height="21px" childLayout="horizontal"/>
+            <panel height="21px" childLayout="horizontal">
+                <control id="BtLogin" name="button" label="Ok" />
+                <panel width="*" />
+                <control id="BtCancel" name="button" label="Cancel"/>
+            </panel>
+        </panel>
+        </layer>
     </screen>
     
     
@@ -142,7 +246,63 @@
             </panel>
         </layer>
     </screen>
-        
+    
+    
+    <screen id="ServerBroswerList" controller="org.openwizcoder.ui.UIServerBroswerListScreenController">
+        <layer childLayout="center">
+            <panel width="90%" height="80%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+                <control name="label" text="Server Broswer" />
+                <panel height="4px" childLayout="horizontal"/>
+                <panel height="21px" childLayout="horizontal">
+                 
+                    <control id="BtBackBL" name="button" label="Back" />
+                    <panel width="*" />
+                    <control id="buttonOk" name="button" label="Fav." />
+                                        
+                    <control id="buttonOk" name="button" label="Host" />
+                    <control id="buttonOk" name="button" label="Filters" />
+                    <control id="buttonOk" name="button" label="Connect" />                    
+                    </panel>
+                </panel>
+        </layer>
+    </screen>
+    
+    <screen id="ServerBroswerFilter" controller="org.openwizcoder.ui.UIClientScreenController">
+        <layer childLayout="center">
+        <panel width="70%" height="25%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+            <panel height="21px" childLayout="horizontal">
+                <control name="label" text="Server Filters:" />
+            </panel>
+            
+            <panel height="21px" childLayout="horizontal">
+                
+                
+                <control id="simpleCheckBox" name="label" text=" Show password: " />
+                <control id="simpleCheckBox" name="checkbox" />
+                
+                <control id="simpleCheckBox" name="label" text=" Hide Full: " />
+                <control id="simpleCheckBox" name="checkbox" />
+                
+                <control id="simpleCheckBox" name="label" text=" Hide Empty: " />
+                <control id="simpleCheckBox" name="checkbox" />
+            </panel>
+            <panel height="21px" childLayout="horizontal"/>
+            <panel height="21px" childLayout="horizontal">
+                <panel width="*" />
+                <control id="buttonOk" name="button" label="Cancel"/>
+                <panel width="*" />
+                <control id="buttonOk" name="button" label="Apply" />
+                <panel width="*" />
+             </panel>
+            
+        </panel>
+        </layer>
+    </screen>
+    
+    
+    <!-- ++++++++++++++++++++++++ -->
+    <!-- POP UP MENU -->
+    <!-- ++++++++++++++++++++++++ -->
         
     <popup id="niftyPopupMenu" childLayout="absolute-inside" controller="ControllerOfYourChoice" width="10%">
         <interact onClick="closePopup()" onSecondaryClick="closePopup()" onTertiaryClick="closePopup()" />
@@ -150,19 +310,22 @@
     </popup>
 
 
-    <popup id="PopupExitID" childLayout="center" backgroundColor="#000a">
-        <panel width="25%" height="25%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+    <popup id="PopupExitID" childLayout="center" backgroundColor="#000a" >
+        <panel width="80%" height="25%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+            <control id="BtYesExit" name="label" text="Do you want quit?"/>
             <panel height="21px" childLayout="horizontal">
-                <control id="buttonOk" name="button" label="Send Message">
-                    <interact onClick="SendClientMessage()"/>
-                </control>
+                <panel width="*"/>
+                <control id="BtYesExit" name="button" label="Yes"/>
+                <panel width="*"/>
+                <control id="BtNoExit" name="button" label="No"/>
+                <panel width="*"/>
             </panel>
         </panel>
         <effect>
-                    <onStartScreen name="move" mode="in" direction="top" length="300" startDelay="0" inherit="true"/>
-                    <onEndScreen name="move" mode="out" direction="bottom" length="300" startDelay="0" inherit="true"/>
-                    <onHover name="pulsate" scaleFactor="0.008" startColor="#f600" endColor="#ffff" post="true"/>
-            </effect>
+            <onStartScreen name="move" mode="in" direction="top" length="300" startDelay="0" inherit="true"/>
+            <onEndScreen name="move" mode="out" direction="bottom" length="300" startDelay="0" inherit="true"/>
+            <onHover name="pulsate" scaleFactor="0.008" startColor="#f600" endColor="#ffff" post="true"/>
+        </effect>
     </popup>    
         
     

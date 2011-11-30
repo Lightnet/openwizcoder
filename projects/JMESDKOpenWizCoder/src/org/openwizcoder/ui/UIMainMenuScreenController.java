@@ -44,34 +44,52 @@ public class UIMainMenuScreenController extends UIBasicScreenController{
     @NiftyEventSubscriber(id = "BtSinglePlayer")
     public void BtSinglePlayernClicked(final String id, final ButtonClickedEvent event) {
         System.out.print("\nButton press");
+        nifty.gotoScreen("UIMenuSingleplayer");        
     }
-    
     
     @NiftyEventSubscriber(id = "BtMultiplePlayer")
     public void BtMultiplePlayerClicked(final String id, final ButtonClickedEvent event) {
         System.out.print("\nButton press");
+        nifty.gotoScreen("ServerBroswerList");
     }
     
     @NiftyEventSubscriber(id = "BtOptions")
     public void BtOptionsClicked(final String id, final ButtonClickedEvent event) {
         System.out.print("\nButton press");
+        nifty.gotoScreen("UIMenuOptions");
     }
     
     @NiftyEventSubscriber(id = "BtModPackages")
     public void BtModPackagesClicked(final String id, final ButtonClickedEvent event) {
         System.out.print("\nButton press");
+        nifty.gotoScreen("UIMenuModpackages");
     }
     
     @NiftyEventSubscriber(id = "BtCredits")
     public void BtCreditsClicked(final String id, final ButtonClickedEvent event) {
         System.out.print("\nButton press");
+        nifty.gotoScreen("UIMenuCredits");
     }
     
     @NiftyEventSubscriber(id = "BtExit")
     public void BtExitClicked(final String id, final ButtonClickedEvent event) {
         System.out.print("\nButton press exit");
-        showMenu();
-        //showpopupExit();
+        //showMenu();
+        showpopupExit();
+    }
+    
+    @NiftyEventSubscriber(id = "BtYesExit")
+    public void BtYesExitClicked(final String id, final ButtonClickedEvent event) {
+        System.out.print("\nButton press exit");
+        //showMenu();
+        System.exit(0);
+    }
+    
+    @NiftyEventSubscriber(id = "BtNoExit")
+    public void BtNoExitClicked(final String id, final ButtonClickedEvent event) {
+        System.out.print("\nButton press exit");
+        //showMenu();
+        nifty.closePopup(popupExit.getId());
     }
     
     public void createExitPopupMenu(){
@@ -113,8 +131,6 @@ public class UIMainMenuScreenController extends UIBasicScreenController{
             }
         }
     };
-    
-
     
     public void showpopupExit() { // the method to trigger the menu
         nifty.showPopup(nifty.getCurrentScreen(), popupExit.getId(), null); 

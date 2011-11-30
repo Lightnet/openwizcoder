@@ -65,7 +65,8 @@ public class UIServerMenuScreenController extends UIBasicScreenController{
         //System.out.print("text:"+text);
     }
         
-    public void BtHost(){
+    @NiftyEventSubscriber(id = "BtHost")
+    public void BtHostClick(final String id, final ButtonClickedEvent eventt) {
         System.out.print("\nSERVER:"+Servername+":"+Serverip+":"+Servertcp+":"+Serverudp);
     }
     

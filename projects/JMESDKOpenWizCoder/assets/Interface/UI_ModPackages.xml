@@ -5,7 +5,7 @@
     <useStyles filename="nifty-default-styles.xml" />
     <useControls filename="nifty-default-controls.xml" />
 
-    <screen id="start" controller="org.openwizcoder.ui.UIModPackagesScreenController">
+    <screen id="UIMenuModpackages" controller="org.openwizcoder.ui.UIModPackagesScreenController">
         <layer childLayout="center">
             <panel childLayout="horizontal"  width="80%" height="80%" backgroundColor="#55a5" padding="10">
                 
@@ -17,16 +17,10 @@
                     </panel>
                 </control-->
                 <panel height="21px" childLayout="horizontal" />
-                
-                <control id="buttonOk" name="button" label="Agree">
-                    <interact onClick="BtAgree()"/>
-                </control>
-                <control id="buttonOk" name="button" label="Agree">
-                    <interact onClick="BtAgree()"/>
-                </control>
+                <control id="BtBackMod" name="button" label="Back" />
+                <control id="buttonOk" name="button" label="Apply" />
+                <control id="buttonOk" name="button" label="UnApply" />
             </panel>
-            
-  
         </layer>
     </screen>
 </nifty>

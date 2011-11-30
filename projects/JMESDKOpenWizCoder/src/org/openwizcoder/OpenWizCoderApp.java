@@ -378,10 +378,12 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
                                                           guiViewPort);
         nifty = niftyDisplay.getNifty();
         
-        //nifty.fromXml("Interface/UI_GameMenus.xml", "start");
-        nifty.fromXml("Interface/UI_GameMenus.xml", "NetworkBuildMenu");
+        nifty.fromXml("Interface/UI_GameMenus.xml", "start");
+        //nifty.fromXml("Interface/UI_GameMenus.xml", "NetworkBuildMenu");
+        //nifty.fromXml("Interface/UI_GameMenus.xml", "HUDPlayer");
+        //nifty.fromXml("Interface/UI_GameMenus.xml", "ClientMenuBuild");
         
-        nifty.gotoScreen("end");
+        //nifty.gotoScreen("end");
 
         //UIModPackagesScreenController modpack = new UIModPackagesScreenController();
         //nifty.fromXml("Interface/UI_ModPackages.xml", "start", modpack);

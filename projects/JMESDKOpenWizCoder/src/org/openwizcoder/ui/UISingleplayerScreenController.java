@@ -14,7 +14,7 @@ import de.lessvoid.nifty.screen.Screen;
  * @author Lightnet
  */
 
-public class UIPopUpExitScreenController extends UIBasicScreenController{
+public class UISingleplayerScreenController extends UIBasicScreenController{
 
     @Override
     public void bind(Nifty nifty, Screen screen) {
@@ -33,19 +33,10 @@ public class UIPopUpExitScreenController extends UIBasicScreenController{
         
     }
     
-    @NiftyEventSubscriber(id = "BtYesExit")
-    public void BtYesExitClicked(final String id, final ButtonClickedEvent event) {
-        System.out.print("\nButton press exit");
+    @NiftyEventSubscriber(id = "BtBackSingleplayer")
+    public void BtBackSingleplayerClicked(final String id, final ButtonClickedEvent event) {
+        System.out.print("\nButton press back");
         //showMenu();
-        System.exit(0);
-    }
-    
-    @NiftyEventSubscriber(id = "BtNoExit")
-    public void BtNoExitClicked(final String id, final ButtonClickedEvent event) {
-        System.out.print("\nButton press exit");
-        //showMenu();
-        nifty.closePopup(nifty.getCurrentScreen().getScreenId());
-    }
-
-    
+        nifty.gotoScreen("start");
+    }  
 }

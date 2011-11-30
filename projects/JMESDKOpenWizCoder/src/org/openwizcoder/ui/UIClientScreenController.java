@@ -6,6 +6,7 @@ package org.openwizcoder.ui;
 
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.NiftyEventSubscriber;
+import de.lessvoid.nifty.controls.ButtonClickedEvent;
 import de.lessvoid.nifty.controls.TextField;
 import de.lessvoid.nifty.controls.TextFieldChangedEvent;
 import de.lessvoid.nifty.screen.Screen;
@@ -63,13 +64,17 @@ public class UIClientScreenController extends UIBasicScreenController{
         Serverudp = event.getText();
         //System.out.print("text:"+text);
     }
-        
-    public void BtConnect(){
+    
+    @NiftyEventSubscriber(id = "BtConnect")
+    public void BtConnectClick(final String id, final ButtonClickedEvent eventt) {
         System.out.print("\nSERVER:"+Servername+":"+Serverip+":"+Servertcp+":"+Serverudp);
+        //nifty.gotoScreen("start");
     }
     
-    public void BtDisconnect(){
-        System.out.print("\nSERVER D/C:");        
+    @NiftyEventSubscriber(id = "BtDisconnect")
+    public void BtDisconnectClick(final String id, final ButtonClickedEvent eventt) {
+        System.out.print("\nSERVER D/C:"+Servername+":"+Serverip+":"+Servertcp+":"+Serverudp);
+        //nifty.gotoScreen("start");
     }
 
 }

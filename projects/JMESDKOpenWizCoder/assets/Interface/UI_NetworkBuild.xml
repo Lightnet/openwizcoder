@@ -6,7 +6,7 @@
         <layer childLayout="center">
         <panel width="80%" height="30%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
 
-            <control name="label" text="Network Config" />
+            <control name="label" text="Client/Server Network Config" />
             <panel height="21px" childLayout="horizontal">
                 <panel width="*" />
                 <control name="label" text="Client Name: " />

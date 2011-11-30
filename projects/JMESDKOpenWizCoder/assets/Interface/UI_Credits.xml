@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    <useStyles filename="nifty-default-styles.xml" />
+    <useControls filename="nifty-default-controls.xml" />
+    <screen id="UIMenuCredits" controller="org.openwizcoder.ui.UICreditsScreenController">
+        <layer childLayout="center">
+            <!--control id="buttonOk" name="button" label="Back" /-->
+            <panel width="70%" height="70%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+            <control id="BtBackCredits" name="button" label="Back" />
+                <!--panel height="21px" childLayout="horizontal">
+                     <control id="buttonOk" name="button" label="Back" />
+                </panel-->
+            </panel>
+        </layer>
+    </screen>
+    <screen id="end">
+    </screen>
+</nifty>

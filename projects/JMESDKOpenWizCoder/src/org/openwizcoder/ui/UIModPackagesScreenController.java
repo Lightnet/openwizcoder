@@ -6,9 +6,9 @@ package org.openwizcoder.ui;
 
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.NiftyEventSubscriber;
+import de.lessvoid.nifty.controls.ButtonClickedEvent;
 import de.lessvoid.nifty.controls.ListBox;
 import de.lessvoid.nifty.controls.ListBoxSelectionChangedEvent;
-import de.lessvoid.nifty.elements.Element;
 import de.lessvoid.nifty.screen.Screen;
 import java.util.List;
 
@@ -61,6 +61,13 @@ public class UIModPackagesScreenController extends UIBasicScreenController{
         for (String selectedItem : selection) {
             System.out.println("listbox selection [" + selectedItem + "]");
         }
+    }
+    
+    
+    @NiftyEventSubscriber(id = "BtBackMod")
+    public void BtBackModClicked(final String id, final ButtonClickedEvent event) {
+        System.out.print("\nButton press");
+        nifty.gotoScreen("start");
     }
     
 }
