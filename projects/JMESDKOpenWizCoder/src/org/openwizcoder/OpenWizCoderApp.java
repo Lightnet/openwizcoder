@@ -547,11 +547,11 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
             }
             */
         }
-        System.out.print("\nserver shareobject?");
+       // System.out.print("\nserver shareobject?");
     }
     
     public void UpdatePlayerObjectClient(Client source,Message message){
-        System.out.print("client update shareobject");
+        //System.out.print("client update shareobject");
         if (message instanceof ObjectShareMsg) {
             boolean bfound = false;
 
@@ -577,13 +577,14 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
                 //newplayer.userid = Integer.toString(source.getId());
                 newplayer.smobjshare = (ObjectShareMsg)message;
                 newplayer.smobjshare.userid = Integer.toString(source.getId());
-
-                //source.send(newplayer.smobjshare);//do not send it back it will overload sending
-                rootNode.attachChild(newplayer.getSpatial());
                 players.add(newplayer);
+                rootNode.updateGeometricState();//make sure it get update else it cause an erro
+                rootNode.attachChild(newplayer.getSpatial());
+                rootNode.updateGeometricState();
+                
             }        
         }
-        System.out.print("\nclient shareobject");
+        //System.out.print("\nclient shareobject");
     }
     
     public void UpdatePlayerObjectServer(HostedConnection source,Message message){

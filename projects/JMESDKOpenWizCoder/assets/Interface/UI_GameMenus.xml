@@ -108,7 +108,7 @@
                 <panel height="21px" childLayout="horizontal">
                     <control name="label" text="Server Online: " />
                     <control id="servername" width="230px" name="textfield" text="App Server" />
-                    <control id="buttonOk" name="button" label="Disconnect" />
+                    <control id="ShutDownID" name="button" label="Disconnect" />
                 </panel>
                 
                 
@@ -124,12 +124,13 @@
     
     <screen id="ClientMenuBuild" controller="org.openwizcoder.ui.UIClientBuildScreenController">
         <layer childLayout="center">
-        <panel width="25%" height="25%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10">
+        <!--panel width="25%" height="25%" align="center" valign="center" childLayout="vertical" backgroundColor="#55a5" padding="10"-->
 
             <panel height="21px" childLayout="horizontal">
                 <control id="BtRequestSpawn" name="button" label="Request Spawn" />
+                <control id="ShutDownClientID" name="button" label="Close Client" />
             </panel>
-        </panel>
+        <!--/panel-->
         </layer>
     </screen>
     

@@ -28,10 +28,10 @@ public class ObjectShareServerListener extends BaseServerListener {
                 //app.UserJoin(source, message);
                 //UpdatePlayerObjectClient
                 getApp().UpdatePlayerObjectServer(source,message);
-                System.out.print("Server got shareobject");
+                //System.out.print("\nServer got shareobject");
                 //System.out.print("\nUSER JOIN SERVER!");
             }else{
-                System.out.print("server error shareobject");
+                //System.out.print("\nserver error shareobject");
             }                    
         } // else....
     }

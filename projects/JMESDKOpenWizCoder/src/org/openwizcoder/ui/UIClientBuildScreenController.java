@@ -39,4 +39,12 @@ public class UIClientBuildScreenController extends UIBasicScreenController{
     public void BtRequestSpawnnClicked(final String id, final ButtonClickedEvent event) {
         System.out.print("Button press");
     }
+    
+    @NiftyEventSubscriber(id = "ShutDownClientID")
+    public void ShutDownClientIDClick(final String id, final ButtonClickedEvent eventt) {
+        System.out.print("\nSERVER D/C:");
+        if(GetApp()!=null){
+            GetApp().ShutDown_Client();
+        }
+    }
 }

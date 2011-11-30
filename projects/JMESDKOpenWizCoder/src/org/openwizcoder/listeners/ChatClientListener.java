@@ -2,24 +2,22 @@ package org.openwizcoder.listeners;
 
 import com.jme3.network.Client;
 import com.jme3.network.Message;
-import org.openwizcoder.messages.ObjectShareMsg;
+import org.openwizcoder.messages.ChatMsg;
 
 /**
  *
  * @author Lightnet
  */
 
-public class ObjectShareClientListener extends BaseClientListener{
+public class ChatClientListener extends BaseClientListener{
     
     @Override
     public void messageReceived(Client source, Message message) {
-        if (message instanceof ObjectShareMsg) {
+        if (message instanceof ChatMsg) {
              if((getApp() !=null)&&(message != null)){
-                getApp().UpdatePlayerObjectClient(source,message);
-                //System.out.print("\nClient got shareobject");
-                //if(getApp().ClientID == null){
-                   getApp().ClientID = source.getId();
-                //}
+                
+                 
+                 
             }else{
                  //System.out.print("\nClient error shareobject 2 con");
              }

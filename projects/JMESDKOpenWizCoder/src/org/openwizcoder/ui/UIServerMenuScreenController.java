@@ -6,6 +6,7 @@ package org.openwizcoder.ui;
 
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.NiftyEventSubscriber;
+import de.lessvoid.nifty.controls.ButtonClickedEvent;
 import de.lessvoid.nifty.controls.TextField;
 import de.lessvoid.nifty.controls.TextFieldChangedEvent;
 import de.lessvoid.nifty.screen.Screen;
@@ -68,7 +69,11 @@ public class UIServerMenuScreenController extends UIBasicScreenController{
         System.out.print("\nSERVER:"+Servername+":"+Serverip+":"+Servertcp+":"+Serverudp);
     }
     
-    public void BtDisconnect(){
-        System.out.print("\nSERVER D/C:");        
+    @NiftyEventSubscriber(id = "ShutDownID")
+    public void ShutDownIDClick(final String id, final ButtonClickedEvent eventt) {
+        System.out.print("\nSERVER D/C:");
+        if(GetApp()!=null){
+            GetApp().ShutDown_Server();
+        }
     }
 }

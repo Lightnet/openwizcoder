@@ -26,12 +26,12 @@ public class BaseServerConnectionListener implements ConnectionListener{
         ObjectShareMsg objshare = new ObjectShareMsg();
         objshare.userid = Integer.toString(conn.getId());
         if(getApp() !=null){
-            System.out.print("\nconnect var server pass shareobject");
+            //System.out.print("\nconnect var server pass shareobject");
             getApp().ServerJoinSO(conn,objshare);
             conn.send(objshare);
             
         }else{
-            System.out.print("\nconnect var server error shareobject");
+            //System.out.print("\nconnect var server error shareobject");
         }
     }
     //client disconnector lose connection

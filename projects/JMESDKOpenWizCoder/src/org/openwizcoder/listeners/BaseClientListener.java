@@ -15,11 +15,11 @@ public class BaseClientListener implements MessageListener<Client> {
     public static OpenWizCoderApp app;
     
     public void messageReceived(Client source, Message message) {
-            if (message instanceof HelloMsg) {
-                // do something with the message
-                HelloMsg helloMessage = (HelloMsg) message;
-                System.out.print("\nClient #"+source.getId()+" received: '"+helloMessage.getSomething()+"'");
-        }
+        //if (message instanceof HelloMsg) {
+            // do something with the message
+            //HelloMsg helloMessage = (HelloMsg) message;
+            //System.out.print("\nClient #"+source.getId()+" received: '"+helloMessage.getSomething()+"'");
+        //}
     }
     
     public static void setApp(OpenWizCoderApp _app){
