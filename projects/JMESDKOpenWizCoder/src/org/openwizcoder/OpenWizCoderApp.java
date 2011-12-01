@@ -1,5 +1,7 @@
 package org.openwizcoder;
 
+import com.jme3.animation.AnimControl;
+import com.jme3.animation.SkeletonControl;
 import org.openwizcoder.controllers.ObjectPlayerController;
 import org.openwizcoder.messages.ObjectShareMsg;
 import org.openwizcoder.messages.HelloMsg;
@@ -212,6 +214,35 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
         floor_geo.addControl(floor_phy);
         bulletAppState.getPhysicsSpace().add(floor_phy);
     }
+    
+    
+    public void FindControlNode(Node parent){
+        System.out.print("\nP NAME:"+parent.getName()+" Len:"+parent.getChildren().size());
+        for ( Spatial spatial :  parent.getChildren()){
+            //System.out.print("\nP NAME:"+spatial.getName());
+            
+            try {
+                       AnimControl animcontrol = spatial.getControl(AnimControl.class);
+                       if(animcontrol !=null){
+                           System.out.print("\nP FOUND ANIM CONTROL:"+spatial.getName());
+                       }else{
+                           System.out.print("\nP NOT FOUND ANIM CONTROL");
+                       }
+                } catch (Exception ee) {
+                }
+            
+            try {
+                Node child = (Node) spatial;
+                if(child.getChildren().size() > 0){
+                    FindControlNode(child);
+                }
+            } catch (Exception e) {
+                System.out.print("\nERROR NAME:"+spatial.getName());
+            }
+            
+            
+        }
+    }
         
     public void Init_chars(){
         
@@ -245,6 +276,30 @@ public class OpenWizCoderApp extends SimpleApplication implements ScreenControll
         flyCam.setEnabled(false);
         chaseCam = new ChaseCamera(cam, model, inputManager);
         */
+        
+        model = (Node) assetManager.loadModel("Models/protypemech_basic.j3o");
+        rootNode.attachChild(model);
+        //System.out.print("\nNAME:"+model.getName());
+        //FindControlNode(model);
+        
+        CharacterControl charcontrol = model.getControl(CharacterControl.class);
+        if(charcontrol !=null){
+            System.out.print("\nPASS FIND CONTROL CHAR");
+        }else{
+            System.out.print("\nFAIL FIND CONTROL CHAR");
+        }
+        
+        AnimControl animcontrol = model.getControl(AnimControl.class);
+        if(animcontrol !=null){
+        System.out.print("\nP FOUND ANIM CONTROL:"+model.getName());
+        }else{
+        System.out.print("\nP NOT FOUND ANIM CONTROL");
+        }
+           
+        
+        
+        
+        
         chaseCam = new ChaseCamera(cam, geom, inputManager);
         
         Spatial blocks = assetManager.loadModel("Models/block.j3o");
